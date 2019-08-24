@@ -57,7 +57,7 @@ app.get('/all_packages', async (req, res, next) => {
 app.get('/create_package', async (req, res, next) => {
     try {
         var newPackage = new PackageModel({
-            item: [],
+            items: [],
         });
         const savedPackage = await newPackage.save();
         return res.json(savedPackage);
@@ -68,7 +68,11 @@ app.get('/create_package', async (req, res, next) => {
 
 app.post('/add_item_to_package', async (req, res, next) => {
     try {
+<<<<<<< HEAD
         var newItem = new ItemModel({
+=======
+        var item = new Item({
+>>>>>>> update
             name: req.body.name,
             price: req.body.price,
             picture: req.body.picture,
