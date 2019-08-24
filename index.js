@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongooseDSN = 'mongodb://localhost:27017/carepak';
 const UserModel = require('./model/user');
 const PackageModel = require('./model/package');
+const DonationModel = require('./model/donation');
 
 const app = express();
 
@@ -44,7 +45,9 @@ app.post('/user/signup', async (req, res, next) => {
 // get all packages
 app.get('/all_packages', async (req, res, next) => {
     try {
-        var packages = await PackageModel.find().populate('items');
+        var packages = await PackageModel.find(
+            { items: { $exists: true, $ne: [] } }
+        ).populate('items');
         res.json(packages);
     } catch(err) {
         return next(err);
@@ -72,12 +75,35 @@ add.post('/add_item_to_package', async (req, res, next) => {
             category: req.body.category,
         });
         const savedItem = await item.save();
-        PackageModel.update(
+        await PackageModel.update(
             {_id: req.packageId},
-            {$push: {items: item._id}}
-        )
+            {$push: {items: savedItem._id}}
+        );
+        const updatedPackage = await PackageModel.findById(req.packageId);
+        return res.json(`New Item ${JSON.stringify(savedItem)} added to package ${JSON.stringify(updatedPackage)}`);
     } catch(err) {
         return next(err);
+    }
+})
+
+add.post('/donate', async (req, res, next) => {
+    // create donation object
+    // add donate object to user history
+    // reduce amount needed in item (if 0, delete item from package)
+    try {
+        var donation = new DonationModel({
+            user: req.body.userId,
+            item: req.body.itemId,
+            amount: req.body.amount,
+        })
+        const savedDonation = await donation.save();
+        await UserModel.update(
+            {_id: req.body.userId},
+            {$push: {history: savedDonation._id}}
+        );
+        
+    } catch(err) {
+        next(err);
     }
 })
 
