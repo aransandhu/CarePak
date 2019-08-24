@@ -6,6 +6,7 @@ const mongooseDSN = 'mongodb://localhost:27017/carepak';
 const UserModel = require('./model/user');
 const PackageModel = require('./model/package');
 const DonationModel = require('./model/donation');
+const ItemModel = require('./model/item');
 
 const app = express();
 
@@ -46,7 +47,7 @@ app.post('/user/signup', async (req, res, next) => {
 app.get('/all_packages', async (req, res, next) => {
     try {
         var packages = await PackageModel.find(
-            { items: { $exists: true, $ne: [] } }
+            // { items: { $exists: true, $ne: [] } }
         ).populate('items');
         res.json(packages);
     } catch(err) {
@@ -54,7 +55,7 @@ app.get('/all_packages', async (req, res, next) => {
     }
 })
 
-app.post('/create_package', async (req, res, next) => {
+app.get('/create_package', async (req, res, next) => {
     try {
         var newPackage = new PackageModel({
             item: [],
@@ -68,18 +69,20 @@ app.post('/create_package', async (req, res, next) => {
 
 app.post('/add_item_to_package', async (req, res, next) => {
     try {
-        var item = new item({
+        var newItem = new ItemModel({
             name: req.body.name,
             price: req.body.price,
             picture: req.body.picture,
             category: req.body.category,
         });
-        const savedItem = await item.save();
+        const savedItem = await newItem.save();
         await PackageModel.update(
-            {_id: req.packageId},
+            {_id: mongoose.Types.ObjectId(req.body.packageId)},
             {$push: {items: {item: savedItem._id, amountPaid: 0}}}
         );
-        const updatedPackage = await PackageModel.findById(req.packageId);
+        const updatedPackage = await PackageModel.findById(req.body.packageId);
+        console.log(mongoose.Types.ObjectId(req.body.packageId));
+        console.log(updatedPackage);
         return res.json(`New Item ${JSON.stringify(savedItem)} added to package ${JSON.stringify(updatedPackage)}`);
     } catch(err) {
         return next(err);
