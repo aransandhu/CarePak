@@ -28,7 +28,7 @@ class SimpleMenu extends Component {
 
   handleSelection(event) {
     this.setState({currentFilter: event.currentTarget.getAttribute("content")});
-    this.props.changeFilter(event.currentTarget.getAttribute("content"));
+    this.props.changeFilter(event.currentTarget.getAttribute("id"));
     this.handleClose();
   }
   
@@ -45,9 +45,9 @@ class SimpleMenu extends Component {
           open={this.state.isOpen}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={(e) => this.handleSelection(e)} content="Recommended for You">Recommended for You</MenuItem>
-          <MenuItem onClick={(e) => this.handleSelection(e)} content="Popular Worldwide">Popular Worldwide</MenuItem>
-          <MenuItem onClick={(e) => this.handleSelection(e)} content="Popular Near You">Popular Near You</MenuItem>
+          <MenuItem onClick={(e) => this.handleSelection(e)} id={1} content="Recommended for You">Recommended for You</MenuItem>
+          <MenuItem onClick={(e) => this.handleSelection(e)} id={2} content="Popular Worldwide">Popular Worldwide</MenuItem>
+          <MenuItem onClick={(e) => this.handleSelection(e)} id={3} content="Popular Near You">Popular Near You</MenuItem>
         </Menu>
       </div>
     );

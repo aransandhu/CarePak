@@ -17,11 +17,21 @@ class Home extends Component {
   constructor(props){
     super(props);
 
+    this.state = {
+      filterId : 1,
+    }
+
     this.changeFilter = this.changeFilter.bind(this)
   }
 
-  changeFilter(filterID){
-    // console.log(filterID)
+  componentDidMount(){
+    //Make initial call to API to sort by Recommended 
+  }
+
+  changeFilter(filterId){
+    this.setState({filterId: filterId})
+
+    //Make another call to API to sort by Popular Nearby or Popular around the world
   }
 
 
@@ -29,19 +39,13 @@ class Home extends Component {
     return (
     <div className="App">
       {/* <NavBar></NavBar> */}
-      <h1>Project Home</h1>
-      <Link to={'/list'}>
+      <h1>CarePak</h1>
+      {/* <Link to={'/item'}>
         <button >
             My List
         </button>
-      </Link>
-      <SimpleMenu 
-        changeFilter={this.changeFilter}
-      >
-        <MenuItem value={1} primaryText="English"  />
-        <MenuItem value={2} primaryText="Spanish" />
-        <MenuItem value={3} primaryText="French" />
-      </SimpleMenu>
+      </Link> */}
+      <SimpleMenu changeFilter={this.changeFilter}/>
 
       <Grid container spacing={3}>
         <Package packageItem={{title: "Local Charity Box"}}/>
