@@ -72,7 +72,10 @@ add.post('/add_item_to_package', async (req, res, next) => {
             category: req.body.category,
         });
         const savedItem = await item.save();
-        
+        PackageModel.update(
+            {_id: req.packageId},
+            {$push: {items: item._id}}
+        )
     } catch(err) {
         return next(err);
     }
