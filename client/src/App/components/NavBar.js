@@ -1,63 +1,56 @@
-// import React, { Component } from 'react';
+import React, { Component } from 'react';
+import { IconButton } from '@material-ui/core';
+import { AccountCircle } from '@material-ui/icons'
+import styled from 'styled-components';
 
-// import { Route, Switch } from 'react-router-dom';
-// import {
-//  AppBar,
-//  Toolbar,
-//  IconButton,
-//  Typography,
-//  Menu,
-//  MenuItem,
-// } from '@material-ui/core';
-// import { AccountCircle, Menu as MenuIcon } from '@material-ui/icons';
+export default class NavBar extends Component{
+  state = {
+    textColor: 'black',
+    bgColor: 'rgb(250, 250, 250)',
+    scrolled: false,
+  }
 
-// class NavBar extends Component{
-    
-//     render(){
-//         return(
-//             <AppBar position="static" style={{ background: '#303C6C' }}>
-//             <Toolbar>
-//               <IconButton edge="start" style={{ marginRight: '1rem' }} color="inherit" aria-label="menu">
-//                 <MenuIcon />
-//               </IconButton>
-//               <Typography variant="h6">
-//                 CarePak
-//               </Typography>
-//                 <div>
-//                   <IconButton
-//                     aria-label="account of current user"
-//                     aria-controls="menu-appbar"
-//                     aria-haspopup="true"
-//                     onClick={this.handleMenu}
-//                     color="inherit"
-//                     edge="end"
-//                     style={{marginLeft: '85vw'}}
-//                   >
-//                     <AccountCircle />
-//                   </IconButton>
-//                   <Menu
-//                     id="menu-appbar"
-//                     anchorEl={}
-//                     anchorOrigin={{
-//                       vertical: 'top',
-//                       horizontal: 'right',
-//                     }}
-//                     keepMounted
-//                     transformOrigin={{
-//                       vertical: 'top',
-//                       horizontal: 'right',
-//                     }}
-//                     open={true}
-//                     onClose={this.handleClose}
-//                   >
-//                     <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-//                     <MenuItem onClick={this.handleClose}>My account</MenuItem>
-//                   </Menu>
-//                 </div>
-//             </Toolbar>
-//       </AppBar>
-//         );
-//     }
-// }
+  listenScrollEvent = e => {
+    if (window.scrollY > 50) {
+      this.setState({textColor: 'rgb(250, 250, 250)', bgColor: '#1a232f', scrolled: true })
+    } else {
+      this.setState({textColor: 'black', bgColor: 'rgb(250, 250, 250)', scrolled: false })
+    }
+  }
 
-// export default NavBar;
+  componentDidMount() {
+    window.addEventListener('scroll', this.listenScrollEvent)
+  }
+
+  render() {
+    const { textColor, bgColor, scrolled } = this.state;
+    return (
+      <Bar bgColor={bgColor} textColor={textColor} scrolled={scrolled}>
+        <IconButton
+          style={{ float: 'right', marginRight: '1rem' }}
+        >
+          <AccountCircle style={{color: `${textColor}`, fontSize: '2rem'}}/>
+        </IconButton>
+        <h1>CarePak</h1>
+      </Bar>
+    );
+  }
+}
+
+const Bar = styled.div`
+  background: ${(props) => props.bgColor};
+  color: ${(props) => props.textColor};
+  height: 3.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 999999;
+  -webkit-transition: ease 0.5s; /* Safari prior 6.1 */
+  transition: ease 0.5s;
+
+  h1 {
+    padding-top: 0.5rem;
+    margin-left: ${(props) => props.scrolled ? '2vw' : 'calc(50vw - 4.5rem)'};
+    transition-property: margin-left;
+    transition-duration: 0.7s;
+  }
+`
