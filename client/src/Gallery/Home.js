@@ -8,25 +8,30 @@ import Grid from '@material-ui/core/Grid';
 
 import Package from './Package/Package';
 
+import NavBar from '../App/components/NavBar';
+
 import SimpleMenu from './components/SimpleMenu'
 
 
 class Home extends Component {
-  state = {
-    selection : 1
-  };
+  constructor(props){
+    super(props);
+
+    this.changeFilter = this.changeFilter.bind(this)
+  }
 
   changeFilter(filterID){
-    this.setState({selection: filterID}, () => {console.log(filterID)})
+    // console.log(filterID)
   }
 
 
   render() {
     return (
     <div className="App">
+      {/* <NavBar></NavBar> */}
       <h1>Project Home</h1>
-      <Link to={'./list'}>
-        <button variant="raised">
+      <Link to={'/list'}>
+        <button >
             My List
         </button>
       </Link>

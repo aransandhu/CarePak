@@ -16,12 +16,11 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
-import Profile from './Profile';
 import App from './App/App';
-import Login from './Login'
+
 
 render((
     <BrowserRouter>
-        <Login />
+        <App/>
     </BrowserRouter>
 ), document.getElementById('root'));
