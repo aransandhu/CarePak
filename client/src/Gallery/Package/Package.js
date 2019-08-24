@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink} from 'react-router-dom';
+import { withRouter } from "react-router";
 
 import styled from 'styled-components';
+
+import Link from '@material-ui/core/Link';
 
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
@@ -15,9 +18,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const Package = ({ packageItem }) => (
+const Package = ({ packageItem, history }) => (
     <Grid item xs={4} style={{ marginTop: '5vh'}}>
-      <Item>
+    {/* <Link component={RouterLink} to="/package/54">   */}
+      <Item onClick={() => history.push('/package/54')}>
         <Box className="box"/>
         <Card style={{zIndex: 1}}>
           <CardActionArea style={{ paddingTop: '50px'}}>
@@ -33,10 +37,11 @@ const Package = ({ packageItem }) => (
           </CardActionArea>
         </Card>
       </Item>
+      {/* </Link> */}
     </Grid>
 );
 
-export default Package;
+export default withRouter(Package);
 
 const Box = styled.div`
   width: 110px;

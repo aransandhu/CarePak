@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import { withRouter } from "react-router";
 
-
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import InfiniteScroll from 'react-infinite-scroller';
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 
 import Package from './Package/Package';
-
 import NavBar from '../App/components/NavBar';
-
 import SimpleMenu from './components/SimpleMenu'
 
 
@@ -36,6 +34,7 @@ class Home extends Component {
 
 
   render() {
+    const { history } = this.props;
     return (
     <div className="App" style={{marginTop: '3rem'}}>
       {/* <NavBar></NavBar> */}
@@ -67,4 +66,4 @@ class Home extends Component {
     );
   }
 }
-export default Home;
+export default withRouter(Home);
