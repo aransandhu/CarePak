@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Grid, Typography, IconButton, TextField } from '@material-ui/core';
+import { Grid, Typography, IconButton, TextField, Card } from '@material-ui/core';
 import styled from 'styled-components';
 
 export default class ItemView extends Component {
@@ -16,6 +16,17 @@ export default class ItemView extends Component {
         </Grid>
         <Grid item xs={7}>
           <div>
+            <Card style={{ background: 'rgba(255, 255, 255, 0.4)', marginTop: '10vh', height: '70vh'}}>
+              <Item url="75-bread-64px.png" />
+              <Item url="74-apple-64px.png" />
+              <Item url="73-carrot-64px.png" />
+              <Item url="70-chocolate-64px.png" />
+              <Item url="71-milk-64px.png" />
+              <Item url="72-fish-64px.png" />
+              <Item url="59-perfume-64px.png" />
+              <Item url="60-makeup-64px.png" />
+              <Item url="58-mirror-64px.png" />
+            </Card>
             <Box/>
           </div>
         </Grid>
@@ -32,11 +43,18 @@ width: 300px;
 height: 220px;
 position: absolute;
 bottom: 0;
-right: calc(30% - 150px);
+right: calc(31% - 150px);
 `
 
 const Item = styled.img.attrs({
-  src: (props) => props.url
+  src: (props) => 'iconset/' + props.url
 })`
-width: 100px;
-height: 100px;`
+width: 12vh;
+height: auto;
+margin: 4vh calc(16.5% - 6vh);
+cursor: pointer;
+&:hover {
+  width: 16vh;
+  margin: 2vh calc(16.5% - 8vh);
+}
+`

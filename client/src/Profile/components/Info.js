@@ -13,8 +13,8 @@ class Info extends Component {
           height: `${height}`,
           width: `${width}`,
           border: '1px solid rgba(50, 50, 50, 0.2)',
-          background: 'rgba(255, 255, 255, 0.2)',
-          margin: '2rem'
+          background: 'rgba(255, 255, 255, 1)',
+          margin: '0.5rem'
         }}
       >
         <Head><Typography variant='subtitle1' style={{fontWeight: '600'}}>{header}</Typography></Head>
@@ -41,17 +41,19 @@ Info.defaultProps = {
 const Head = styled.div`
   padding: 0.5rem 0.7rem 0.3rem 0.5rem;
   border-bottom: 1px solid rgba(50, 50, 50, 0.2);
-  background: rgba(200, 200, 200, 0.3);
-`
-
-const Icon = styled.div`
-  height: 7rem;
-  width: 7rem;
-  float: left;
-  margin-right: 1rem;
-  border: 1px solid #EEEEEE;
+  background: rgba(255, 255, 255, 1);
 `
 
 const Content = styled.div`
   padding: 0.7rem;
+`
+
+const Icon = styled.img.attrs({
+  src: 'example_icon.png'
+})`
+height: 7rem;
+width: 7rem;
+float: left;
+margin-right: 1rem;
+border: 1px solid #EEEEEE;
 `

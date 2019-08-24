@@ -23,7 +23,6 @@ import ItemView from './ItemView';
 
 render((
     <BrowserRouter>
-        <App />
         <ItemView />
     </BrowserRouter>
 ), document.getElementById('root'));
