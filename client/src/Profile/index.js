@@ -17,21 +17,19 @@ class Profile extends Component {
     };
 
     return (
-     
-      <div>
-         {console.log("HERE")}
-        <Display />
-        <Grid item xs={4}>
+      <div style={{ margin: '5rem 10vw 0 10vw'}}>
+        <Grid container spacing={3} style={{ width: '80vw'}}>
+          <Grid item xs={4}>
             <Info
               height='28vh'
+              min='12rem'
               width='100%'
               header="Basic Info"
               icon="yes"
               content={
-                <div style={{ marginTop: '1rem' }}>
+                <div style={{ marginTop: '0.5rem' }}>
                   <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
-                  <Typography variant='subtitle1'>{user.user}</Typography>
-
+                  <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{user.user}</Typography>
                   <IconButton
                     style={{ background: 'lightblue'}}
                     size="small"
@@ -66,18 +64,56 @@ class Profile extends Component {
             <Info
               height='28vh'
               width='100%'
+              min='12rem'
               header="Interests"
-              content="Nothing here yet!"
+              content={
+                "labels"
+              }
             />
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={8}>
             <Info
               height='75vh'
+              min='30rem'
               width='100%'
               header="Donation History"
-              content="Nothing here yet!"
+              content={
+                <Grid container spacing={3} style={{ padding: '1rem' }}>
+                  <Grid item xs={2}>
+                    <Item url="iconset/apple.png" />
+                    <Item url="iconset/milk.png" />
+                    <Item url="iconset/bodysuit.png" />
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Item url="iconset/groceries.png" />
+                    <Item url="iconset/cash.png" />
+                    <Item url="iconset/broccoli.png" />
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Item url="iconset/grapes.png" />
+                    <Item url="iconset/dice.png" />
+                    <Item url="iconset/feeder.png" />
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Item url="iconset/backpack.png" />
+                    <Item url="iconset/folder.png" />
+                    <Item url="iconset/make-up.png" />
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Item url="iconset/chocolate.png" />
+                    <Item url="iconset/open-book.png" />
+                    <Item url="iconset/pencil-case.png" />
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Item url="iconset/notebook.png" />
+                    <Item url="iconset/robot.png" />
+                    <Item url="iconset/teeth-brushing.png" />
+                  </Grid>
+                </Grid>
+              }
             />
           </Grid>
+        </Grid>
       </div>
     );
   }
@@ -97,4 +133,19 @@ position: absolute;
 left: 8vw;
 top: 5rem;
 border: 10px solid #436e5d;
+`
+
+const Item = styled.img.attrs({
+  src: (props) => props.url
+})`
+  height: auto;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 50%;
+  &:hover{
+    width: 110%;
+    cursor: pointer;
+    margin-left: -5%;
+    margin-top: -10%;
+  }
 `

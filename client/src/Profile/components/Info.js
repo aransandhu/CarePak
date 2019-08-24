@@ -5,14 +5,15 @@ import PropTypes from 'prop-types';
 
 class Info extends Component {
   render() {
-    const { header, content, height, width, icon } = this.props;
+    const { header, content, height, width, icon, min } = this.props;
 
     return (
       <Card
         style={{
           height: `${height}`,
           width: `${width}`,
-          border: '1px solid rgba(50, 50, 50, 0.2)',
+          minHeight: `${min}`,
+          border: '1px solid rgba(50, 50, 255, 0.2)',
           background: 'rgba(255, 255, 255, 1)',
           margin: '0.5rem'
         }}
@@ -40,7 +41,7 @@ Info.defaultProps = {
 
 const Head = styled.div`
   padding: 0.5rem 0.7rem 0.3rem 0.5rem;
-  border-bottom: 1px solid rgba(50, 50, 50, 0.2);
+  border-bottom: 1px solid rgba(50, 50, 255, 0.2);
   background: rgba(255, 255, 255, 1);
 `
 
