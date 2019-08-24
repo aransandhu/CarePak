@@ -5,7 +5,6 @@ import { IconButton } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons'
 import Link from '@material-ui/core/Link';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 class NavBar extends Component{
   state = {
