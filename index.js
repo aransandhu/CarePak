@@ -77,7 +77,7 @@ add.post('/add_item_to_package', async (req, res, next) => {
         const savedItem = await item.save();
         await PackageModel.update(
             {_id: req.packageId},
-            {$push: {items: savedItem._id}}
+            {$push: {items: {savedItem._id, 0}}}
         );
         const updatedPackage = await PackageModel.findById(req.packageId);
         return res.json(`New Item ${JSON.stringify(savedItem)} added to package ${JSON.stringify(updatedPackage)}`);
@@ -101,7 +101,7 @@ add.post('/donate', async (req, res, next) => {
             {_id: req.body.userId},
             {$push: {history: savedDonation._id}}
         );
-        
+
     } catch(err) {
         next(err);
     }
@@ -113,7 +113,7 @@ app.get('*', (req,res) =>{
 });
 
 const port = process.env.PORT || 5000;
-mongoose.connect(mongooseDSN, { 
+mongoose.connect(mongooseDSN, {
     useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false
   });
   var db = mongoose.connection;
