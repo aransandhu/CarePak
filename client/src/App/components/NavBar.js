@@ -31,8 +31,8 @@ class NavBar extends Component{
     return (
       <Bar bgColor={bgColor} textColor={textColor} scrolled={scrolled}>
         <IconButton style={{ float: 'right', marginRight: '1rem' }}>
-         
-         <Link component={RouterLink} to="/profile">  
+
+         <Link component={RouterLink} to="/profile">
           <AccountCircle style={{color: `${textColor}`, fontSize: '2rem'}}/>
           </Link>
         </IconButton>
@@ -54,8 +54,18 @@ const Bar = styled.div`
   -webkit-transition: ease 0.5s; /* Safari prior 6.1 */
   transition: ease 0.5s;
 
+  /* .searchBar {
+    display: ${(props) => props.scrolled ? 'inline-block' : 'none'};
+    margin: 0;
+    margin-left: ${(props) => props.scrolled ? '0rem' : '-6rem'};
+    transition-property: margin-left;
+    transition-duration: 0.7s;
+    color: rgb(250, 250, 250);
+  } */
+
   h1 {
-    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    display: inline-block;
     margin-left: ${(props) => props.scrolled ? '2vw' : 'calc(50vw - 4.5rem)'};
     transition-property: margin-left;
     transition-duration: 0.7s;
