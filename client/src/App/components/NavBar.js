@@ -63,6 +63,7 @@ const Bar = styled.div`
   } */
 
   h1 {
+    cursor: pointer;
     color: ${(props) => props.textColor};
     margin-top: 0.5rem;
     display: inline-block;

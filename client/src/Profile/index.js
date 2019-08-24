@@ -7,7 +7,31 @@ import Icon from '@mdi/react'
 import { mdiFacebook, mdiTwitter } from '@mdi/js';
 import styled from 'styled-components';
 
+import ReactDOM from 'react-dom';
+import Calendar from 'react-github-contribution-calendar';
+
+
 class Profile extends Component {
+
+  renderGraph = () => {
+
+    const values = {
+      '2016-06-23': 1,
+      '2016-06-26': 2,
+      '2016-06-27': 3,
+      '2016-06-28': 4,
+      '2016-06-29': 4
+    }
+    const until = '2016-06-30';
+
+    let elem = document.getElementById('graph');
+
+    ReactDOM.render(<Calendar values={values} until={until} />, elem)
+  }
+
+  componentDidMount() {
+    this.renderGraph()
+  }
 
   render() {
     const user = {
@@ -67,11 +91,20 @@ class Profile extends Component {
               min='12rem'
               header="Interests"
               content={
-                "labels"
+                "interests go here!"
               }
             />
           </Grid>
           <Grid item xs={8}>
+            <Info
+              height='28vh'
+              min='12rem'
+              width='100%'
+              header="Donation History"
+              content={
+                <div id="graph"></div>
+              }
+            />
             <Info
               height='75vh'
               min='30rem'
