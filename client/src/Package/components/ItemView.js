@@ -4,7 +4,6 @@ import { Grid, Typography, IconButton, TextField, Card } from '@material-ui/core
 import styled from 'styled-components';
 
 export default class ItemView extends Component {
-
   render() {
 
     return (
