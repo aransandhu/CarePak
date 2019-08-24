@@ -20,7 +20,6 @@ import Typography from '@material-ui/core/Typography';
 
 const Package = ({ packageItem, history }) => (
     <Grid item xs={4} style={{ marginTop: '5vh'}}>
-    {/* <Link component={RouterLink} to="/package/54">   */}
       <Item onClick={() => history.push('/package/54')}>
         <Box className="box"/>
         <Card style={{zIndex: 1}}>
@@ -37,7 +36,6 @@ const Package = ({ packageItem, history }) => (
           </CardActionArea>
         </Card>
       </Item>
-      {/* </Link> */}
     </Grid>
 );
 
@@ -59,7 +57,7 @@ const Item = styled.div`
   &:hover {
     .box {
       height: 110px;
-      background: url('open_box.png');
+      background: url('../open_box.png');
       background-size: 110px;
       animation-duration: 0.7s;
       animation-name: bounce;
@@ -69,7 +67,7 @@ const Item = styled.div`
 
   .box {
     height: 110px;
-    background: url('closed_box.png');
+    background: url('../closed_box.png');
     background-size: 110px;
   }
 

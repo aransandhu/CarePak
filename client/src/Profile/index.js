@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { withRouter } from "react-router";
 import { Info } from './components'
 import { Grid, Typography, IconButton, Card } from '@material-ui/core';
 import Icon from '@mdi/react'
@@ -16,7 +17,9 @@ class Profile extends Component {
     };
 
     return (
+     
       <div>
+         {console.log("HERE")}
         <Display />
         <Grid item xs={4}>
             <Info
@@ -25,21 +28,10 @@ class Profile extends Component {
               header="Basic Info"
               icon="yes"
               content={
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <div style={{ marginTop: '0.5rem' }}>
-                  <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
-                  <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{user.user}</Typography>
-=======
                 <div style={{ marginTop: '1rem' }}>
                   <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
                   <Typography variant='subtitle1'>{user.user}</Typography>
->>>>>>> changes
-=======
-                <div style={{ marginTop: '0.5rem' }}>
-                  <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
-                  <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{user.user}</Typography>
->>>>>>> singup init
+
                   <IconButton
                     style={{ background: 'lightblue'}}
                     size="small"
@@ -91,7 +83,7 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);
 
 
 const Display = styled.img.attrs({

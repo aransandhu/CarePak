@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Gallery from '../Gallery';
-import { NavBar } from './components'
+import { NavBar } from './components';
+import Profile from '../Profile';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        
         <BrowserRouter>
+          <NavBar />
           <Switch>
-            <Route path="/" component={Gallery} />
+            <Route exact path="/" component={Gallery} />
+            <Route path="/profile" component={Profile}/>
           </Switch>
         </BrowserRouter>
       </div>

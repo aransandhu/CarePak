@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 
-import InfiniteScroll from 'react-infinite-scroller';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
 
 import Package from './Package/Package';
 import NavBar from '../App/components/NavBar';
@@ -34,7 +31,6 @@ class Home extends Component {
 
 
   render() {
-    const { history } = this.props;
     return (
     <div className="App" style={{marginTop: '3rem'}}>
       {/* <NavBar></NavBar> */}
@@ -43,7 +39,9 @@ class Home extends Component {
             My List
         </button>
       </Link> */}
+      <Grid container justify="flex-end" >
       <SimpleMenu changeFilter={this.changeFilter}/>
+      </Grid>
 
       <Grid container spacing={3} style={{ width: '96vw', margin: '0 2vw' }}>
         <Package packageItem={{title: "Local Charity Box"}}/>

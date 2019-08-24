@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { Link as RouterLink, withRouter} from 'react-router-dom';
+
 import { IconButton } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons'
+import Link from '@material-ui/core/Link';
 import styled from 'styled-components';
 
-export default class NavBar extends Component{
+
+class NavBar extends Component{
   state = {
     textColor: 'black',
     bgColor: 'rgb(250, 250, 250)',
@@ -26,16 +30,19 @@ export default class NavBar extends Component{
     const { textColor, bgColor, scrolled } = this.state;
     return (
       <Bar bgColor={bgColor} textColor={textColor} scrolled={scrolled}>
-        <IconButton
-          style={{ float: 'right', marginRight: '1rem' }}
-        >
+        <IconButton style={{ float: 'right', marginRight: '1rem' }}>
+         
+         <Link component={RouterLink} to="/profile">  
           <AccountCircle style={{color: `${textColor}`, fontSize: '2rem'}}/>
+          </Link>
         </IconButton>
-        <h1>CarePak</h1>
+        <h1 onClick={() => this.props.history.push('/')}>CarePak</h1>
       </Bar>
     );
   }
 }
+
+export default withRouter(NavBar);
 
 const Bar = styled.div`
   background: ${(props) => props.bgColor};
