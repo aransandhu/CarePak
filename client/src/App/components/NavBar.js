@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { IconButton, OutlinedInput } from '@material-ui/core';
 import { AccountCircle, Search } from '@material-ui/icons'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export default class NavBar extends Component{
   state = {
@@ -31,10 +32,10 @@ export default class NavBar extends Component{
         >
           <AccountCircle style={{color: `${textColor}`, fontSize: '2rem'}}/>
         </IconButton>
-        <h1>CarePak</h1>
+        <Link to="/"><h1>CarePak</h1></Link>
         {
           //I gave up on this
-          
+
         // <div className="searchBar">
         //   <OutlinedInput
         //     placeholder="Search Google Maps"
@@ -71,6 +72,7 @@ const Bar = styled.div`
   } */
 
   h1 {
+    color: ${(props) => props.textColor};
     margin-top: 0.5rem;
     display: inline-block;
     margin-left: ${(props) => props.scrolled ? '2vw' : 'calc(50vw - 4.5rem)'};
