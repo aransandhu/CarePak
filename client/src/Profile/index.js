@@ -25,6 +25,7 @@ class Profile extends Component {
               icon="yes"
               content={
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div style={{ marginTop: '0.5rem' }}>
                   <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
                   <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{user.user}</Typography>
@@ -33,6 +34,11 @@ class Profile extends Component {
                   <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
                   <Typography variant='subtitle1'>{user.user}</Typography>
 >>>>>>> changes
+=======
+                <div style={{ marginTop: '0.5rem' }}>
+                  <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
+                  <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{user.user}</Typography>
+>>>>>>> singup init
                   <IconButton
                     style={{ background: 'lightblue'}}
                     size="small"
