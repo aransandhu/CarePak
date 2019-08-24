@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const mongooseDSN = 'mongodb://localhost:27017/carepak';
 const UserModel = require('./model/user');
+const PackageModel = require('./model/package');
 
 const app = express();
 
@@ -41,7 +42,41 @@ app.post('/user/signup', async (req, res, next) => {
 });
 
 // get all packages
-// app.get('/')
+app.get('/all_packages', async (req, res, next) => {
+    try {
+        var packages = await PackageModel.find().populate('items');
+        res.json(packages);
+    } catch(err) {
+        return next(err);
+    }
+})
+
+app.post('/create_package', async (req, res, next) => {
+    try {
+        var newPackage = new PackageModel({
+            item: [],
+        });
+        const savedPackage = await newPackage.save();
+        return res.json(savedPackage);
+    } catch(err) {
+        return next(err);
+    }
+})
+
+add.post('/add_item_to_package', async (req, res, next) => {
+    try {
+        var item = new item({
+            name: req.body.name,
+            amountNeeded: req.body.amountNeeded,
+            picture: req.body.picture,
+            category: req.body.category,
+        });
+        const savedItem = await item.save();
+        
+    } catch(err) {
+        return next(err);
+    }
+})
 
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
