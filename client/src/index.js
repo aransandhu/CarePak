@@ -17,10 +17,19 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import App from './App/App';
+<<<<<<< HEAD
 
 
 render((
     <BrowserRouter>
         <App/>
+=======
+import Login from './Login';
+import ItemView from './ItemView';
+
+render((
+    <BrowserRouter>
+        <ItemView />
+>>>>>>> fd81e49bb85f004ad7fcb9b522bb4e0237b7e942
     </BrowserRouter>
 ), document.getElementById('root'));

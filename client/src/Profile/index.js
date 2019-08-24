@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Info } from './components'
-import { Grid, Typography, IconButton } from '@material-ui/core';
+import { Grid, Typography, IconButton, Card } from '@material-ui/core';
 import Icon from '@mdi/react'
 import { mdiFacebook, mdiTwitter } from '@mdi/js';
+import styled from 'styled-components';
 
 class Profile extends Component {
 
@@ -15,18 +16,30 @@ class Profile extends Component {
     };
 
     return (
-      <div style={{ padding: '1rem 5rem' }}>
-        <Grid container spacing={5}>
-          <Grid item xs={4}>
+      <div>
+        <Display />
+        <Grid item xs={4}>
             <Info
               height='28vh'
               width='100%'
               header="Basic Info"
               icon="yes"
               content={
+<<<<<<< HEAD
+<<<<<<< HEAD
                 <div style={{ marginTop: '0.5rem' }}>
                   <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
                   <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{user.user}</Typography>
+=======
+                <div style={{ marginTop: '1rem' }}>
+                  <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
+                  <Typography variant='subtitle1'>{user.user}</Typography>
+>>>>>>> changes
+=======
+                <div style={{ marginTop: '0.5rem' }}>
+                  <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
+                  <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{user.user}</Typography>
+>>>>>>> singup init
                   <IconButton
                     style={{ background: 'lightblue'}}
                     size="small"
@@ -73,10 +86,23 @@ class Profile extends Component {
               content="Nothing here yet!"
             />
           </Grid>
-        </Grid>
       </div>
     );
   }
 }
 
 export default Profile;
+
+
+const Display = styled.img.attrs({
+  src: 'example_icon.png'
+})`
+height: 8rem;
+width: 8rem;
+border-radius: 50%;
+float: left;
+position: absolute;
+left: 8vw;
+top: 5rem;
+border: 10px solid #436e5d;
+`
