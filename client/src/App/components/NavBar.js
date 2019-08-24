@@ -6,7 +6,10 @@ import { AccountCircle } from '@material-ui/icons'
 import Link from '@material-ui/core/Link';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 
+=======
+>>>>>>> add iconset
 
 class NavBar extends Component{
   state = {
@@ -37,7 +40,25 @@ class NavBar extends Component{
           <AccountCircle style={{color: `${textColor}`, fontSize: '2rem'}}/>
           </Link>
         </IconButton>
+<<<<<<< HEAD
         <h1 onClick={() => this.props.history.push('/')}>CarePak</h1>
+=======
+        <Link to="/"><h1>CarePak</h1></Link>
+        {
+          //I gave up on this
+
+        // <div className="searchBar">
+        //   <OutlinedInput
+        //     placeholder="Search Google Maps"
+        //     margin="dense"
+        //     style={{color: 'rgb(250, 250, 250)', background: 'rgba(250, 250, 250, 0.1)'}}
+        //   />
+        //   <IconButton aria-label="search">
+        //     <Search />
+        //   </IconButton>
+        // </div>
+        }
+>>>>>>> add iconset
       </Bar>
     );
   }
