@@ -5,7 +5,7 @@ var ItemSchema = new Schema({
   name: {
     type: String
   },
-  price: {
+  amountNeeded: {
     type: Number
   },
   picture: {
