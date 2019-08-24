@@ -2,14 +2,9 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PackageSchema = new Schema({
-  itemsQty: [{
-    itemId: {
+  items: [{
       type: Schema.Types.ObjectId,
       ref: 'Item',
-    },
-    qty: {
-      type: Number
-    }
   }]
 })
 
