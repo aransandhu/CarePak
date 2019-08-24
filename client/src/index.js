@@ -18,10 +18,12 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import Profile from './Profile';
 import App from './App/App';
-import Login from './Login'
+import Login from './Login';
+import ItemView from './ItemView';
 
 render((
     <BrowserRouter>
-        <Login />
+        <App />
+        <ItemView />
     </BrowserRouter>
 ), document.getElementById('root'));

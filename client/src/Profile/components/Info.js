@@ -12,8 +12,8 @@ class Info extends Component {
         style={{
           height: `${height}`,
           width: `${width}`,
-          border: '1px solid #BBBBBB',
-          background: 'rgba(255, 255, 255, 0.5)',
+          border: '1px solid rgba(50, 50, 50, 0.2)',
+          background: 'rgba(255, 255, 255, 0.2)',
           margin: '2rem'
         }}
       >
@@ -40,8 +40,8 @@ Info.defaultProps = {
 
 const Head = styled.div`
   padding: 0.5rem 0.7rem 0.3rem 0.5rem;
-  border-bottom: 1px solid #BBBBBB;
-  background: rgba(245, 245, 245, 0.5);
+  border-bottom: 1px solid rgba(50, 50, 50, 0.2);
+  background: rgba(200, 200, 200, 0.3);
 `
 
 const Icon = styled.div`
