@@ -18,7 +18,10 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import Profile from './Profile';
 import App from './App/App';
+<<<<<<< HEAD
 import Login from './Login'
+=======
+>>>>>>> changes
 
 render((
     <BrowserRouter>

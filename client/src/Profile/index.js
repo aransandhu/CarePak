@@ -24,9 +24,15 @@ class Profile extends Component {
               header="Basic Info"
               icon="yes"
               content={
+<<<<<<< HEAD
                 <div style={{ marginTop: '0.5rem' }}>
                   <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
                   <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{user.user}</Typography>
+=======
+                <div style={{ marginTop: '1rem' }}>
+                  <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
+                  <Typography variant='subtitle1'>{user.user}</Typography>
+>>>>>>> changes
                   <IconButton
                     style={{ background: 'lightblue'}}
                     size="small"
