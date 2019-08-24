@@ -36,7 +36,7 @@ export default class ItemView extends Component {
 
 
 const Box = styled.img.attrs({
-  src: 'open_box.png'
+  src: '../open_box.png'
 })`
 width: 300px;
 height: 220px;
@@ -46,7 +46,7 @@ right: calc(31% - 150px);
 `
 
 const Item = styled.img.attrs({
-  src: (props) => 'iconset/' + props.url
+  src: (props) => '../iconset/' + props.url
 })`
 width: 12vh;
 height: auto;
