@@ -37,9 +37,8 @@ class Home extends Component {
 
   render() {
     return (
-    <div className="App">
+    <div className="App" style={{marginTop: '3rem'}}>
       {/* <NavBar></NavBar> */}
-      <h1>CarePak</h1>
       {/* <Link to={'/item'}>
         <button >
             My List
@@ -48,6 +47,14 @@ class Home extends Component {
       <SimpleMenu changeFilter={this.changeFilter}/>
 
       <Grid container spacing={3} style={{ width: '96vw', margin: '0 2vw' }}>
+        <Package packageItem={{title: "Local Charity Box"}}/>
+        <Package packageItem={{title: "Local Charity Box"}}/>
+        <Package packageItem={{title: "Local Charity Box"}}/>
+
+        <Package packageItem={{title: "Local Charity Box"}}/>
+        <Package packageItem={{title: "Local Charity Box"}}/>
+        <Package packageItem={{title: "Local Charity Box"}}/>
+
         <Package packageItem={{title: "Local Charity Box"}}/>
         <Package packageItem={{title: "Local Charity Box"}}/>
         <Package packageItem={{title: "Local Charity Box"}}/>

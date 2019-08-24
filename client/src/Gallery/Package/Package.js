@@ -40,10 +40,10 @@ export default Package;
 
 const Box = styled.div`
   width: 110px;
-  height: 120px;
+  height: 110px;
   position: absolute;
   z-index: 999;
-  margin: -6vh 0 0 calc(15% - 55px);
+  margin: -3.5% 0 0 calc(15% - 55px);
   cursor: pointer;
 `
 
@@ -53,6 +53,7 @@ const Item = styled.div`
 
   &:hover {
     .box {
+      height: 110px;
       background: url('open_box.png');
       background-size: 110px;
       animation-duration: 0.7s;
@@ -62,6 +63,7 @@ const Item = styled.div`
   }
 
   .box {
+    height: 110px;
     background: url('closed_box.png');
     background-size: 110px;
   }
