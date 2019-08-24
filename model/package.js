@@ -3,8 +3,9 @@ var Schema = mongoose.Schema;
 
 var PackageSchema = new Schema({
   items: [{
-      type: Schema.Types.ObjectId,
+      item: { type: Schema.Types.ObjectId,
       ref: 'Item',
+      }, 
       amountPaid: Number
   }]
 })
