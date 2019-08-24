@@ -16,28 +16,73 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const Package = ({ packageItem }) => (
-    <Grid item item xs={4}>
-        <Card>
-            <CardActionArea>
-                <Box/>
-                <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {packageItem.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                    across all continents except Antarctica
-                </Typography>
-                </CardContent>
-            </CardActionArea>
+    <Grid item xs={4} style={{ marginTop: '5vh'}}>
+      <Item>
+        <Box className="box"/>
+        <Card style={{zIndex: 1}}>
+          <CardActionArea style={{ paddingTop: '50px'}}>
+              <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                  {packageItem.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                  across all continents except Antarctica
+              </Typography>
+              </CardContent>
+          </CardActionArea>
         </Card>
+      </Item>
     </Grid>
 );
 
 export default Package;
 
-const Box = styled.img.attrs({
-  src: 'closed_box.png'
-})`
-width: 100px;
-height: 100px;`
+const Box = styled.div`
+  width: 110px;
+  height: 120px;
+  position: absolute;
+  z-index: 999;
+  margin: -6vh 0 0 calc(15% - 55px);
+  cursor: pointer;
+`
+
+const Item = styled.div`
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    .box {
+      background: url('open_box.png');
+      background-size: 110px;
+      animation-duration: 0.7s;
+      animation-name: bounce;
+      animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+    }
+  }
+
+  .box {
+    background: url('closed_box.png');
+    background-size: 110px;
+  }
+
+  @keyframes bounce {
+      0%   { transform: scale(1,1)      translateY(0); }
+      10%  { transform: scale(1.1,.9)   translateY(0); }
+      30%  { transform: scale(.9,1.1)   translateY(-20px); }
+      50%  { transform: scale(1.05,.95) translateY(0); }
+      57%  { transform: scale(1,1)      translateY(-3px); }
+      64%  { transform: scale(1,1)      translateY(0); }
+      100% { transform: scale(1,1)      translateY(0); }
+  }
+
+  .packageCard {
+    -webkit-transition: ease 0.2s; /* Safari prior 6.1 */
+    transition: ease 0.2s;
+    &:hover {
+      background-color: white !important;
+      -webkit-transition: ease 0.2s; /* Safari prior 6.1 */
+      transition: ease 0.2s;
+    }
+  }
+`

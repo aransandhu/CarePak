@@ -25,7 +25,7 @@ class Home extends Component {
   }
 
   componentDidMount(){
-    //Make initial call to API to sort by Recommended 
+    //Make initial call to API to sort by Recommended
   }
 
   changeFilter(filterId){
@@ -47,7 +47,7 @@ class Home extends Component {
       </Link> */}
       <SimpleMenu changeFilter={this.changeFilter}/>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={3} style={{ width: '96vw', margin: '0 2vw' }}>
         <Package packageItem={{title: "Local Charity Box"}}/>
         <Package packageItem={{title: "Local Charity Box"}}/>
         <Package packageItem={{title: "Local Charity Box"}}/>
