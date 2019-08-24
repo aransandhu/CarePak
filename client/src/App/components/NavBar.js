@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { IconButton } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons'
+import { IconButton, OutlinedInput } from '@material-ui/core';
+import { AccountCircle, Search } from '@material-ui/icons'
 import styled from 'styled-components';
 
 export default class NavBar extends Component{
@@ -32,6 +32,20 @@ export default class NavBar extends Component{
           <AccountCircle style={{color: `${textColor}`, fontSize: '2rem'}}/>
         </IconButton>
         <h1>CarePak</h1>
+        {
+          //I gave up on this
+          
+        // <div className="searchBar">
+        //   <OutlinedInput
+        //     placeholder="Search Google Maps"
+        //     margin="dense"
+        //     style={{color: 'rgb(250, 250, 250)', background: 'rgba(250, 250, 250, 0.1)'}}
+        //   />
+        //   <IconButton aria-label="search">
+        //     <Search />
+        //   </IconButton>
+        // </div>
+        }
       </Bar>
     );
   }
@@ -47,8 +61,18 @@ const Bar = styled.div`
   -webkit-transition: ease 0.5s; /* Safari prior 6.1 */
   transition: ease 0.5s;
 
+  /* .searchBar {
+    display: ${(props) => props.scrolled ? 'inline-block' : 'none'};
+    margin: 0;
+    margin-left: ${(props) => props.scrolled ? '0rem' : '-6rem'};
+    transition-property: margin-left;
+    transition-duration: 0.7s;
+    color: rgb(250, 250, 250);
+  } */
+
   h1 {
-    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    display: inline-block;
     margin-left: ${(props) => props.scrolled ? '2vw' : 'calc(50vw - 4.5rem)'};
     transition-property: margin-left;
     transition-duration: 0.7s;
