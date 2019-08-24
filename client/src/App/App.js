@@ -37,8 +37,6 @@ import {
   Typography,
   Menu,
   MenuItem,
-  FormGroup,
-  FormControlLabel
 } from '@material-ui/core';
 import { AccountCircle, Menu as MenuIcon } from '@material-ui/icons';
 
@@ -68,7 +66,7 @@ class App extends Component {
 
     return (
       <div>
-        <AppBar position="static" style={{ background: '#303C6C' }}>
+        <AppBar position="static" style={{ background: 'black' }}>
           <Toolbar>
             <IconButton edge="start" style={{ marginRight: '1rem' }} color="inherit" aria-label="menu">
               <MenuIcon />
