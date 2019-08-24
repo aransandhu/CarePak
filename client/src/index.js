@@ -22,6 +22,7 @@ import Login from './Login'
 
 render((
     <BrowserRouter>
-        <Login />
+        <App/>
+        <Profile />
     </BrowserRouter>
 ), document.getElementById('root'));
