@@ -17,10 +17,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import App from './App/App';
-import Profile from './Profile'
 
 render((
     <BrowserRouter>
-        <Profile/>
+        <App/>
     </BrowserRouter>
 ), document.getElementById('root'));
