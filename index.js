@@ -70,14 +70,14 @@ app.post('/add_item_to_package', async (req, res, next) => {
     try {
         var item = new item({
             name: req.body.name,
-            amountNeeded: req.body.amountNeeded,
+            price: req.body.price,
             picture: req.body.picture,
             category: req.body.category,
         });
         const savedItem = await item.save();
         await PackageModel.update(
             {_id: req.packageId},
-            {$push: {items: {savedItem._id, 0}}}
+            {$push: {items: {item: savedItem._id, amountPaid: 0}}}
         );
         const updatedPackage = await PackageModel.findById(req.packageId);
         return res.json(`New Item ${JSON.stringify(savedItem)} added to package ${JSON.stringify(updatedPackage)}`);
@@ -89,7 +89,7 @@ app.post('/add_item_to_package', async (req, res, next) => {
 add.post('/donate', async (req, res, next) => {
     // create donation object
     // add donate object to user history
-    // reduce amount needed in item (if 0, delete item from package)
+    // add amount to amountPaid in package
     try {
         var donation = new DonationModel({
             user: req.body.userId,
@@ -101,7 +101,7 @@ add.post('/donate', async (req, res, next) => {
             {_id: req.body.userId},
             {$push: {history: savedDonation._id}}
         );
-
+        
     } catch(err) {
         next(err);
     }
