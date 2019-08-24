@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from '@material-ui/core';
+import { Card, Typography } from '@material-ui/core';
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
 
@@ -8,10 +8,20 @@ class Info extends Component {
     const { header, content, height, width, icon } = this.props;
 
     return (
-      <Card style={{ height: `${height}`, width: `${width}`, border: '1px solid #AAAAAA', background: 'rgba(255, 255, 255, 0.5)'}}>
-        <Head>{header}</Head>
-        {icon && <Icon />}
-        hello! How are you?
+      <Card
+        style={{
+          height: `${height}`,
+          width: `${width}`,
+          border: '1px solid #BBBBBB',
+          background: 'rgba(255, 255, 255, 0.5)',
+          margin: '2rem'
+        }}
+      >
+        <Head><Typography variant='subtitle1' style={{fontWeight: '600'}}>{header}</Typography></Head>
+        <Content>
+          {icon && <Icon />}
+          {content}
+        </Content>
       </Card>
     );
   }
@@ -29,13 +39,19 @@ Info.defaultProps = {
 }
 
 const Head = styled.div`
-  height: 2rem;
-  border-bottom: 1px solid #AAAAAA;
-  background: rgba(200, 200, 200, 0.5);
+  padding: 0.5rem 0.7rem 0.3rem 0.5rem;
+  border-bottom: 1px solid #BBBBBB;
+  background: rgba(245, 245, 245, 0.5);
 `
 
 const Icon = styled.div`
-  height: 4rem;
-  width: 4rem;
-  background: red;
+  height: 7rem;
+  width: 7rem;
+  float: left;
+  margin-right: 1rem;
+  border: 1px solid #EEEEEE;
+`
+
+const Content = styled.div`
+  padding: 0.7rem;
 `
