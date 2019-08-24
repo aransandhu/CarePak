@@ -19,7 +19,6 @@ class Profile extends Component {
     return (
      
       <div>
-         {console.log("HERE")}
         <Display />
         <Grid item xs={4}>
             <Info
