@@ -10,4 +10,4 @@ var PackageSchema = new Schema({
   }]
 })
 
-module.exports = mongoose.model('User', PackageSchema);
+module.exports = mongoose.model('Package', PackageSchema);
