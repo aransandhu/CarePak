@@ -86,7 +86,7 @@ app.post('/add_item_to_package', async (req, res, next) => {
     }
 })
 
-add.post('/donate', async (req, res, next) => {
+app.post('/donate', async (req, res, next) => {
     // create donation object
     // add donate object to user history
     // add amount to amountPaid in package
