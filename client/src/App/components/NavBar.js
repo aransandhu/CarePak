@@ -5,6 +5,7 @@ import { IconButton } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons'
 import Link from '@material-ui/core/Link';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 class NavBar extends Component{
@@ -64,6 +65,7 @@ const Bar = styled.div`
   } */
 
   h1 {
+    color: ${(props) => props.textColor};
     margin-top: 0.5rem;
     display: inline-block;
     margin-left: ${(props) => props.scrolled ? '2vw' : 'calc(50vw - 4.5rem)'};
