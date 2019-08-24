@@ -66,7 +66,7 @@ app.post('/create_package', async (req, res, next) => {
     }
 })
 
-add.post('/add_item_to_package', async (req, res, next) => {
+app.post('/add_item_to_package', async (req, res, next) => {
     try {
         var item = new item({
             name: req.body.name,
