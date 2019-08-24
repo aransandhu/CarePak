@@ -47,8 +47,7 @@ app.post('/user/signup', async (req, res, next) => {
 app.get('/all_packages', async (req, res, next) => {
     try {
         var packages = await PackageModel.find(
-            // { items: { $exists: true, $ne: [] } }
-        ).populate('items');
+        ).populate('items.item');
         res.json(packages);
     } catch(err) {
         return next(err);
@@ -78,11 +77,9 @@ app.post('/add_item_to_package', async (req, res, next) => {
         const savedItem = await newItem.save();
         await PackageModel.update(
             {_id: mongoose.Types.ObjectId(req.body.packageId)},
-            {$push: {items: {item: savedItem._id, amountPaid: 0}}}
+            {$push: {items: {item: savedItem._id, amountPaid: 0, numDonations: 0}}}
         );
         const updatedPackage = await PackageModel.findById(req.body.packageId);
-        console.log(mongoose.Types.ObjectId(req.body.packageId));
-        console.log(updatedPackage);
         return res.json(`New Item ${JSON.stringify(savedItem)} added to package ${JSON.stringify(updatedPackage)}`);
     } catch(err) {
         return next(err);
@@ -96,6 +93,7 @@ app.post('/donate', async (req, res, next) => {
     try {
         var donation = new DonationModel({
             user: req.body.userId,
+            package: req.body.packageId,
             item: req.body.itemId,
             amount: req.body.amount,
         })
@@ -104,7 +102,33 @@ app.post('/donate', async (req, res, next) => {
             {_id: req.body.userId},
             {$push: {history: savedDonation._id}}
         );
-        
+        // var p1 = await PackageModel.findOne({
+        //     _id: mongoose.Types.ObjectId(req.body.packageId),
+        //     'items.item': mongoose.Types.ObjectId(req.body.itemId),       
+        // });
+        // console.log(p1);
+        // var p2 = await PackageModel.findOne({
+        //     _id: mongoose.Types.ObjectId(req.body.packageId),
+        //     'items.item': mongoose.Types.ObjectId(req.body.itemId),       
+        // }).populate('items.item');
+        // console.log('p2');
+        // console.log(JSON.stringify(p2));
+        // console.log(p2.items[0]);
+        // console.log(p2.items[0].item);
+        await PackageModel.updateOne(
+            {
+                _id: mongoose.Types.ObjectId(req.body.packageId),
+                'items.item': mongoose.Types.ObjectId(req.body.itemId),
+            }, 
+            { '$inc':
+                {'items.$.amountPaid': req.body.amount, 'items.$.numDonations': 1},
+            }
+        );
+        var updatedPackage = await PackageModel.find({
+            _id: mongoose.Types.ObjectId(req.body.packageId),
+            'items.item': mongoose.Types.ObjectId(req.body.itemId),       
+        });
+        return res.json(updatedPackage);
     } catch(err) {
         next(err);
     }

@@ -6,7 +6,8 @@ var PackageSchema = new Schema({
       item: { type: Schema.Types.ObjectId,
       ref: 'Item',
       }, 
-      amountPaid: Number
+      amountPaid: Number,
+      numDonations: Number,
   }]
 })
 

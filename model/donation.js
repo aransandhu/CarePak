@@ -6,6 +6,10 @@ var DonationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
+  package: {
+    type: Schema.Types.ObjectId,
+    ref: 'Package',
+  },
   item: {
     type: Schema.Types.ObjectId,
     ref: 'Item',
