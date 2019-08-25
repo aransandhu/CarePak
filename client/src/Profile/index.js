@@ -111,7 +111,7 @@ class Profile extends Component {
     })
 
 
-    
+
     this.renderGraph()
   }
 
@@ -204,7 +204,7 @@ class Profile extends Component {
                   <Grid item xs={2}>
                     <Item url="iconset/backpack.png" />
                     <Item url="iconset/folder.png" />
-                    <Item url="iconset/make-up.png" />
+                    <Item url="iconset/makeup.png" />
                   </Grid>
                   <Grid item xs={2}>
                     <Item url="iconset/chocolate.png" />
