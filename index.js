@@ -159,7 +159,7 @@ app.post('/topBoxType/', function (req, res){
     let packageID = req.body.packageID;
     let topX = 2;
 
-    var sql = "SELECT y.Package_id, x.Category, Count(y.Item_id) as total FROM PackageItem y INNER JOIN Item x ON y.Item_id = x.id WHERE y.Package_id = ? GROUP BY y.Package_id, x.Category ORDER BY total LIMIT ?";
+    var sql = "SELECT y.Package_id, x.Category, Count(y.Item_id) as total FROM PackageItem y INNER JOIN Item x ON y.Item_id = x.id WHERE y.Package_id = ? GROUP BY y.Package_id, x.Category ORDER BY total DESC LIMIT ?";
     db.all(sql, [packageID, topX], function (err, row){
   			if (err) {
           console.log(err);
@@ -168,7 +168,8 @@ app.post('/topBoxType/', function (req, res){
           res.status(200);
 			  } else {
 				  res.status(401);
-		    }
+        }
+        console.log(row)
 		    res.json(row);
 		});
 });
