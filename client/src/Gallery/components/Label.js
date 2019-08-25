@@ -6,7 +6,11 @@ export default class Label extends Component {
     const { tag, from, to } = this.props;
 
     return (
+<<<<<<< HEAD
       <Tag from={from} to={to}>{tag}</Tag>
+=======
+      <Tag>{tag}</Tag>
+>>>>>>> ??:
     )
   }
 }
@@ -21,6 +25,7 @@ const Tag = styled.div `
   box-shadow: 0 .2rem .5rem rgba(0,0,0,.15);
   color: white;
   cursor: pointer;
+<<<<<<< HEAD
   font-size: 0.8em;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -29,4 +34,13 @@ const Tag = styled.div `
   text-align: left;
   margin-right: 1rem;
   padding: 0.2rem 1rem 0rem 1rem;
+=======
+  font-size: 0.6em;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 1rem;
+  width: 5rem;
+  text-align: left;
+>>>>>>> ??:
 `
