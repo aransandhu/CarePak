@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Grid, Typography, Card } from '@material-ui/core';
+import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import ItemCard from './ItemCard'
@@ -50,14 +51,27 @@ class ItemView extends Component {
       // always executed
     });
 
-    
+    axios.post('/topBoxType/', {
+      packageID: this.props.packageNum,
+    })
+    .then(function (response) {
+      // handle success
+      self.setState({boxTags: response.data[0]}, () => {console.log(response.data[0])})
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    }); 
   }
 
 
   render() {
     return (
       <div style={{height: '92vh'}}>
-        {this.state.package !== null && <Grid container spacing={3} style={{width: '98vw' }}>
+        {this.state.package !== null && this.state.boxTags != null && <Grid container spacing={3} style={{width: '98vw' }}>
           <Grid item xs={5}>
             {console.log(this.state.package)}
             <div style={{padding: '3.5rem 2rem'}}>
@@ -65,7 +79,10 @@ class ItemView extends Component {
               <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
               {this.state.package.CharityName}
               </Typography>
-              <Typography variant="subtitle1" style={{marginTop: '2rem'}}>
+              <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
+              <Chip label={this.state.boxTags.Category}/>
+              </Typography>
+              <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
               {this.state.package.Description}
               </Typography>
               <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
