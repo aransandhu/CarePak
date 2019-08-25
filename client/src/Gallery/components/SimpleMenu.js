@@ -45,9 +45,9 @@ class SimpleMenu extends Component {
           open={this.state.isOpen}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={(e) => this.handleSelection(e)} id={1} content="Popular Near You">Popular Near You</MenuItem>
-          <MenuItem onClick={(e) => this.handleSelection(e)} id={2} content="Popular Worldwide">Popular Worldwide</MenuItem>
-          <MenuItem onClick={(e) => this.handleSelection(e)} id={3} content="View All">View All</MenuItem>
+          <MenuItem onClick={(e) => this.handleSelection(e)} id='popular' content="Popular Near You">Popular Near You</MenuItem>
+          <MenuItem onClick={(e) => this.handleSelection(e)} id='worldwide' content="Popular Worldwide">Popular Worldwide</MenuItem>
+          <MenuItem onClick={(e) => this.handleSelection(e)} id='all' content="View All">View All</MenuItem>
         </Menu>
       </div>
     );
