@@ -10,14 +10,14 @@ class Gallery extends Component {
       <div style={{ height: '90%', position: 'relative' }}>
         <BrowserRouter>
             <Switch>
-            <Route exact path="/" component={Home} />
-            <Route
-            exact
-            path="/package/:id"
-            component={(props) => {
-              return <ItemView packageNum={Number(props.match.params.id)} {...props} />;
-            }}
-          />
+              <Route exact path="/" component={Home} />
+              <Route
+                exact
+                path="/package/:id"
+                component={(props) => {
+                  return <ItemView packageNum={Number(props.match.params.id)} {...props} />;
+                }}
+              />
             </Switch>
         </BrowserRouter>
       </div>
