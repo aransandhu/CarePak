@@ -29,14 +29,26 @@ app.use(bodyParser.urlencoded({ extended : true}));
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-var sql = fs.readFileSync('db/test.sql').toString();
-console.log(sql);
+db.serialize(function() {
+  var sql = fs.readFileSync('db/createUser.sql').toString();
+  db.run(sql);
+  var sql = fs.readFileSync('db/createItem.sql').toString();
+  db.run(sql);
+  var sql = fs.readFileSync('db/createPackages.sql').toString();
+  db.run(sql);
+  var sql = fs.readFileSync('db/createPackageItem.sql').toString();
+  db.run(sql);
+  var sql = fs.readFileSync('db/createHistory.sql').toString();
+  db.run(sql);
+});
 
-db.run(sql, (err) => {
-  if (err) {
-    console.log('ERROR!', err)
-  }
-})
+// var sql = fs.readFileSync('db/test.sql').toString();
+//
+// db.run(sql, (err) => {
+//   if (err) {
+//     console.log('ERROR!', err)
+//   }
+// })
 
 // User route
 //
