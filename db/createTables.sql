@@ -1,0 +1,57 @@
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Item;
+DROP TABLE IF EXISTS Packages;
+DROP TABLE IF EXISTS History;
+DROP TABLE IF EXISTS PackageItem;
+
+CREATE TABLE User (
+	Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    LastName VARCHAR(255) NOT NULL,
+    FirstName VARCHAR(255) NOT NULL,
+    UserName VARCHAR(255) NOT NULL,
+    Password VARCHAR(255),
+    City VARCHAR(255) NOT NULL,
+    Email VARCHAR(255),
+    Icon VARCHAR(255)
+);
+
+CREATE TABLE Item (
+    Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    Name VARCHAR(255) NOT NULL,
+    Category VARCHAR(255) NOT NULL,
+    CurPrice int NOT NULL, 
+    Icon VARCHAR(255)
+);
+
+CREATE TABLE TempItem (
+    Name VARCHAR(255) NOT NULL,
+    Category VARCHAR(255) NOT NULL,
+    CurPrice int NOT NULL, 
+    Icon VARCHAR(255)
+);
+
+CREATE TABLE Packages (
+    Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    Title VARCHAR(255) NOT NULL,
+    CharityName VARCHAR(255) NOT NULL,
+    Description VARCHAR(255) NOT NULL,
+    City VARCHAR(255) NOT NULL,
+    NumberDonations INTEGER NOT NULL
+);
+
+CREATE TABLE History (
+    Date VARCHAR(255),
+    AmountPaid INTEGER,
+    User_id INTEGER,
+    Item_id INTEGER,
+    FOREIGN KEY (User_id) REFERENCES User (Id),
+    FOREIGN KEY (Item_id) REFERENCES Item (Id)
+);
+
+CREATE TABLE PackageItem (
+    paidSoFar INTEGER NOT NULL,
+    Package_id INTEGER,
+    Item_id INTEGER,
+    FOREIGN KEY (Package_id) REFERENCES Packages (Id),
+    FOREIGN KEY (Item_id) REFERENCES Item (Id)
+);

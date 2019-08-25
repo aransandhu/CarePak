@@ -1,0 +1,95 @@
+Milk Powder,baby,14,milk_powder
+Baby Crib,baby,10,baby_crib
+Diapers,baby,10,diapers
+Rattle,baby,2,rattle
+Canned Beans,food,5,canned_beans
+Cell-Phone ,electronics,50,cell-phone
+Instant Noodles,food,2,instant_noodles
+Canned Pasta,food,6,pasta
+Cereal,food,5,cereal
+Chocolate,food,5,chocolate
+Hot Chocolate,food,2,hot_chocolate
+Trail Mix,food,1,trail_mix
+Granola Bars,food,1,granola_bars
+Juice Boxes,food,5,juice_boxes
+Macaroni & Cheese,food,2,macaroni
+Canned Soup,food ,4,canned_soup
+Pillow,grooming,10,pillow
+Kitchen Utensils,kitchen,5,kitchen_utensils
+Pots/Pans,kitchen,10,pot
+Plates,kitchen,5,plates
+Cup,kitchen,2,cup
+T-shirts,clothes,10,t-shirts
+Sweaters,clothes,25,sweaters
+Socks,necessities,5,socks
+Rain Jacket,necessities,30,rain_jacket
+Men Underwear,necessities,5,men_underwear
+Women Underwear,necessities,5,women_underwear
+Toilet Paper,necessities,5,toilet_paper
+Water,necessities,5,water
+Soap,necessities,3,soap
+Shampoo,necessities,7,shampoo
+Toothbrush/Toothpaste,necessities,2,toothbrush
+Comb,necessities,4,comb
+Blanket,necessities,3,blanket
+First-Aid Kit,necessities,5,first-aid
+Feminine Hygiene Products,necessities,5,feminine_hygiene
+Towels,necessities,10,towels
+Backpack,school,30,backpack
+Pencil,school,2,pencil
+Erasers,school,2,erasers
+Notebook,school,2,notebook
+Pens,school,2,pens
+Lunch Bag,school,8,lunch_bag
+Calculator,school,10,calculator
+Colored Pencils,school,2,colored_pencil
+Basketball Shoes,sports,30,basketball_shoes
+Basketball,sports,20,basketball
+Skateboard,sports,30,skateboard
+Stuffed Animals,toys,3,stuffed_animals
+Toy Cars,toys,2,toy_cars
+Puzzle,toys,2,puzzle
+Board Games,toys,5,board_games
+Gift Cards,toys,20,gift_cards
+Baby Toys,toys,5,baby_toys
+Lego,toys,10,lego
+Winter Jacket,winter,60,winter_jacket
+Toque,winter,10,toque
+Gloves,winter,10,gloves
+Winter Boots,winter,30,winter_boots
+Thermal Underwear,winter,10,thermal_undewear
+Badminton Racket,sports,20,badminton_racket
+Bicycles,sports,50,bicycles
+Blender,kitchen,20,blender
+Toaster,kitchen,20,toaster
+Can Opener ,kitchen,10,can_opener
+Kettle,kitchen,25,kettle
+Baseball Bat,sports,20,baseball_bat
+Sheets,necessities,5,sheets
+Soccer,sports,20,soccer
+Baseball Mitt,sports,15,baseball_mitt
+Light Bulbs,home,5,light_bulbs
+Rug,home,15,rug
+Decor,home,5,decor
+Curtains,home,20,curtains
+Alarm clock,home,5,alarm_clock
+Lamp,home,10,lamp
+Fan,home,5,fan
+Baseball,sports,10,baseball
+Hangers,home,5,hangers
+Door Hooks,home,5,door_hooks
+Hanging Shelves,home,5,hanging_shelves
+Guitar,hobbies,50,guitar
+Paintbrushes,hobbies,2,paintbrushes
+Knitting Equipment,hobbies,5,knitting_equipment
+Door Mirror,home,10,door_mirror
+Storage Bins,home,10,storage_bins
+Drawer Organizers,home,10,drawer_organizers
+Shoe Rack,home,10,shoe_rack
+Closet Rod,home,5,closet_rod
+Running Shoes,sports,30,running_shoes
+Space Saver Bags ,home,10,space_saver_bags
+Art Palette,hobbies,3,art_palette
+Artwork Frame,hobbies,10,artwork_frame
+Paint,hobbies,5,paintbrushes
+Fire Starter,necessities,10,fire_starter
