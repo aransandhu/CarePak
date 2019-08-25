@@ -13,20 +13,49 @@ import Calendar from 'react-github-contribution-calendar';
 
 class Profile extends Component {
 
-  renderGraph = () => {
-
-    const values = {
-      '2016-06-23': 1,
-      '2016-06-26': 2,
-      '2016-06-27': 3,
-      '2016-06-28': 4,
-      '2016-06-29': 4
+  padZero(int) {
+    let i = (int + 1).toString()
+    if (i.length === 1) {
+      i = '0' + i
     }
-    const until = '2016-06-30';
+    return i
+  }
+
+  generateValues() {
+    const mos = [...Array(12).keys()]
+    const days = [...Array(29).keys()]
+
+    let values = {}
+
+    for (var i of mos) {
+      for (var j of days) {
+        if (Math.floor(Math.random() * 3) === 0) {
+          values[`2016-${this.padZero(i)}-${this.padZero(j)}`] =
+          Math.floor(Math.random() * 2) + Math.floor(Math.random() * 4)
+        }
+      }
+    }
+
+    return values
+  }
+
+  renderGraph = () => {
+    this.generateValues()
+
+    const values = this.generateValues()
+    const until = '2016-12-30';
+
+    const panelColors = [
+      '#EEEEEE',
+      '#d6e684',
+      '#8cc666',
+      '#44a340',
+      '#1e6823',
+    ];
 
     let elem = document.getElementById('graph');
 
-    ReactDOM.render(<Calendar values={values} until={until} />, elem)
+    ReactDOM.render(<Calendar values={values} until={until} panelColors={panelColors} style={{width: '100%'}}/>, elem)
   }
 
   componentDidMount() {
@@ -41,7 +70,7 @@ class Profile extends Component {
     };
 
     return (
-      <div style={{ margin: '5rem 10vw 0 10vw'}}>
+      <Wrap>
         <Grid container spacing={3} style={{ width: '80vw'}}>
           <Grid item xs={4}>
             <Info
@@ -100,7 +129,7 @@ class Profile extends Component {
               height='28vh'
               min='12rem'
               width='100%'
-              header="Donation History"
+              header="Donation Frequency"
               content={
                 <div id="graph"></div>
               }
@@ -147,7 +176,7 @@ class Profile extends Component {
             />
           </Grid>
         </Grid>
-      </div>
+      </Wrap>
     );
   }
 }
@@ -180,5 +209,30 @@ const Item = styled.img.attrs({
     cursor: pointer;
     margin-left: -5%;
     margin-top: -10%;
+  }
+`
+
+const Wrap = styled.div`
+  margin: 5rem 10vw 0 10vw;
+
+  .calendar {
+      font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif;
+      width: 100%;
+  }
+
+  .calendar-wrapper {
+      width: 100%;
+  }
+
+  .week {
+      font-size: 9px;
+      alignment-baseline: central;
+      fill: #AAA;
+  }
+
+  .month {
+      font-size: 10px;
+      alignment-baseline: central;
+      fill: #AAA;
   }
 `
