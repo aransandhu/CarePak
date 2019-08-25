@@ -6,7 +6,7 @@ import { ArrowBack } from '@material-ui/icons'
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import ItemCard from './ItemCard'
-import { Label } from '../components'
+import { Label, PurchaseModal } from '../components'
 
 import axios from 'axios';
 
@@ -17,6 +17,8 @@ class ItemView extends Component {
     this.state = {
       package: null,
       packageItems: [],
+      purchasing: {},
+      open: false,
     }
   }
 
@@ -71,8 +73,18 @@ class ItemView extends Component {
 
 
   render() {
+    const { purchasing, open } = this.state;
+    console.log("STATE:::", purchasing, open)
+
     return (
       <div style={{height: '92vh'}}>
+        <PurchaseModal
+          open={open}
+          name={purchasing.title}
+          price={purchasing.price}
+          charity={purchasing.charity}
+          close={() => this.setState({ purchasing: {}, open: false, })}
+        />
         {this.state.package !== null && this.state.boxTags != null && <Grid container spacing={3} style={{width: '98vw' }}>
           <Grid item xs={5}>
             {console.log(this.state.package)}
@@ -108,10 +120,16 @@ class ItemView extends Component {
                 <Grid item xs={4}>
                 {this.state.packageItems.slice(0, 3).map((item) =>
                     <ItemCard
-                    title={item.Name}
-                    description=""
-                    price={item.CurPrice}
-                    icon={item.Icon}
+                      title={item.Name}
+                      description=""
+                      price={item.CurPrice}
+                      icon={item.Icon}
+                      clickfxn={() => this.setState({
+                        purchasing: {
+                          title: item.Name, price: item.CurPrice, charity: this.state.package.CharityName
+                        },
+                        open: true,
+                      })}
                     />
                   )}
                 </Grid>
@@ -122,6 +140,12 @@ class ItemView extends Component {
                     description=""
                     price={item.CurPrice}
                     icon={item.Icon}
+                    clickfxn={() => this.setState({
+                      purchasing: {
+                        title: item.Name, price: item.CurPrice, charity: this.state.package.CharityName
+                      },
+                      open: true,
+                    })}
                     />
                   )}
                 </Grid>
@@ -132,6 +156,12 @@ class ItemView extends Component {
                     description=""
                     price={item.CurPrice}
                     icon={item.Icon}
+                    clickfxn={() => this.setState({
+                      purchasing: {
+                        title: item.Name, price: item.CurPrice, charity: this.state.package.CharityName
+                      },
+                      open: true,
+                    })}
                     />
                   )}
                 </Grid>

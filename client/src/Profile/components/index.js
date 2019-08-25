@@ -1,5 +1,6 @@
 import Info from './Info'
+import Label from './Label'
 
 export {
-  Info
+  Info, Label
 }
