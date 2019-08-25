@@ -106,6 +106,21 @@ app.use(bodyParser.json());
 //     }
 // });
 
+app.get('/all/', function (req, res){
+  var sql = "SELECT y.* FROM Packages y ?";
+  db.all(sql, function (err, row){
+      if (err) {
+        console.log(err);
+        res.status(500);
+      } else if (row) {
+        res.status(200);
+      } else {
+        res.status(401);
+      }
+      res.json(row);
+  });
+});
+
 app.post('/popular/', function (req, res){
     var location = req.body.data.location;
     let topX = 6;
