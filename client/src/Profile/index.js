@@ -208,6 +208,7 @@ class Profile extends Component {
                   </Grid>
                   <Grid item xs={2}>
                     <Item url="iconset/chocolate.png" />
+<<<<<<< HEAD
                     <Item url="iconset/open-book.png" />
                     <Item url="iconset/socks.png" />
                   </Grid>
@@ -215,6 +216,15 @@ class Profile extends Component {
                     <Item url="iconset/notebook.png" />
                     <Item url="iconset/robot.png" />
                     <Item url="iconset/toothbrush.png" />
+=======
+                    <Item url="iconset/book.png" />
+                    <Item url="iconset/colored_pencils.png" />
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Item url="iconset/notebook.png" />
+                    <Item url="iconset/plates.png" />
+                    <Item url="iconset/canned_beans.png" />
+>>>>>>> setup label
                   </Grid>
                 </Grid>
               }
