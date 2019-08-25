@@ -35,62 +35,53 @@ export default class ItemView extends Component {
               <Grid container spacing={0} style={{ marginLeft: '5rem'}}>
                 <Grid item xs={4}>
                   <ItemCard
-                    title="Apple"
+                    title="apple"
                     description="An apple a day keeps the doctor away."
                     price={1}
-                    url="apple.png"
                   />
                   <ItemCard
-                    title="Apple"
+                    title="apple"
                     description="An apple a day keeps the doctor away."
                     price={1}
-                    url="robot.png"
                   />
                   <ItemCard
-                    title="Apple"
+                    title="apple"
                     description="An apple a day keeps the doctor away."
                     price={1}
-                    url="strawberry.png"
                   />
                 </Grid>
                 <Grid item xs={4}>
                   <ItemCard
-                    title="Apple"
+                    title="apple"
                     description="An apple a day keeps the doctor away."
                     price={1}
-                    url="milk.png"
                   />
                   <ItemCard
-                    title="Apple"
+                    title="baby_toys"
                     description="An apple a day keeps the doctor away."
                     price={1}
-                    url="teeth-brushing.png"
                   />
                   <ItemCard
-                    title="Apple"
+                    title="apple"
                     description="An apple a day keeps the doctor away."
                     price={1}
-                    url="groceries.png"
                   />
                 </Grid>
                 <Grid item xs={4}>
                   <ItemCard
-                    title="Apple"
+                    title="apple"
                     description="An apple a day keeps the doctor away."
                     price={1}
-                    url="water.png"
                   />
                   <ItemCard
-                    title="Apple"
+                    title="apple"
                     description="An apple a day keeps the doctor away."
                     price={1}
-                    url="tomato.png"
                   />
                   <ItemCard
-                    title="Apple"
+                    title="apple"
                     description="An apple a day keeps the doctor away."
                     price={1}
-                    url="teddy-bear.png"
                   />
                 </Grid>
               </Grid>
