@@ -7,10 +7,14 @@ export default class Label extends Component {
 
     return (
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Tag from={from} to={to}>{tag}</Tag>
 =======
       <Tag>{tag}</Tag>
 >>>>>>> ??:
+=======
+      <Tag from={from} to={to}>{tag}</Tag>
+>>>>>>> label
     )
   }
 }
@@ -26,6 +30,7 @@ const Tag = styled.div `
   color: white;
   cursor: pointer;
 <<<<<<< HEAD
+<<<<<<< HEAD
   font-size: 0.8em;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
@@ -36,11 +41,18 @@ const Tag = styled.div `
   padding: 0.2rem 1rem 0rem 1rem;
 =======
   font-size: 0.6em;
+=======
+  font-size: 0.8em;
+>>>>>>> label
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 1rem;
-  width: 5rem;
+  height: 1.4rem;
   text-align: left;
+<<<<<<< HEAD
 >>>>>>> ??:
+=======
+  margin-right: 1rem;
+  padding: 0.4rem 1rem 0rem 1rem;
+>>>>>>> label
 `
