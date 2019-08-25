@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
 
 import Home from './Home';
-import ItemView from './ItemView/ItemView';
+import ItemView from './ItemView';
 
 class Gallery extends Component {
   render() {
@@ -26,4 +26,4 @@ class Gallery extends Component {
 }
 
 
-export default Gallery;
+export default withRouter(Gallery);

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link as RouterLink} from 'react-router-dom';
-import { withRouter } from "react-router";
+import { Link as RouterLink, withRouter} from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -20,17 +19,16 @@ import Typography from '@material-ui/core/Typography';
 
 const Package = ({ packageItem, history }) => (
     <Grid item xs={4} style={{ marginTop: '5vh'}}>
-      <Item onClick={() => history.push('/package/54')}>
+      <Item onClick={() => history.push('/package/' + packageItem.Id)}>
         <Box className="box"/>
         <Card style={{zIndex: 1}}>
           <CardActionArea style={{ paddingTop: '50px'}}>
               <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                  {packageItem.title}
+                  {packageItem.CharityName}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                  across all continents except Antarctica
+                  {packageItem.Title}
               </Typography>
               </CardContent>
           </CardActionArea>

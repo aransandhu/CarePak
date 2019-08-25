@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router";
-import { Info } from './components'
+import { Info } from './components';
+import NavBar from './NavBar';
 import { Grid, Typography, IconButton, Card } from '@material-ui/core';
 import Icon from '@mdi/react'
 import { mdiFacebook, mdiTwitter } from '@mdi/js';

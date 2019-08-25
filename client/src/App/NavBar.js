@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link as RouterLink, withRouter} from 'react-router-dom';
-
 import { IconButton } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons'
 import Link from '@material-ui/core/Link';
@@ -35,7 +34,9 @@ class NavBar extends Component{
           <AccountCircle style={{color: `${textColor}`, fontSize: '2rem'}}/>
           </Link>
         </IconButton>
-        <h1 onClick={() => this.props.history.push('/')}>CarePak</h1>
+        <Link component={RouterLink} to="/">
+          <h1>CarePak</h1>
+        </Link>
       </Bar>
     );
   }

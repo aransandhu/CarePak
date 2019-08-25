@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router";
+import axios from 'axios';
 
 import Grid from '@material-ui/core/Grid';
 
 import Package from './Package/Package';
-import NavBar from '../App/components/NavBar';
 import SimpleMenu from './components/SimpleMenu'
 
 
@@ -14,6 +14,8 @@ class Home extends Component {
 
     this.state = {
       filterId : 1,
+      loading: true,
+      packageList: [],
     }
 
     this.changeFilter = this.changeFilter.bind(this)
@@ -21,44 +23,69 @@ class Home extends Component {
 
   componentDidMount(){
     //Make initial call to API to sort by Recommended
+    // Make a request for a user with a given ID
+    var self = this;
+
+    axios.post('/popular/', {
+      data: {
+        location: 'Toronto',
+      }
+    })
+    .then(function (response) {
+      // handle success
+      self.setState({packageList: response.data}, () => {console.log(response.data)})
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
   }
 
-  changeFilter(filterId){
-    this.setState({filterId: filterId})
+  changeFilter(newFilterId){
+    var self = this;
 
-    //Make another call to API to sort by Popular Nearby or Popular around the world
+    const oldId = this.state.filterId;
+    if (oldId !== newFilterId){
+      this.setState({filterId: newFilterId})
+    
+      axios({
+        method: 'post',
+        url: newFilterId === 1 ? '/global/' : '/globalpopular/',
+        data: newFilterId === 1 ? {location: 'Toronto'} : {}
+      })
+      .then(function (response) {
+        // handle success
+        self.setState({packageList: response.data}, () => console.log(self.state.packageList))
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
+    };  
   }
 
 
   render() {
+    const { packageList } = this.state;
+
     return (
     <div className="App" style={{marginTop: '3rem'}}>
-      {/* <NavBar></NavBar> */}
-      {/* <Link to={'/item'}>
-        <button >
-            My List
-        </button>
-      </Link> */}
       <Grid container justify="flex-end" >
       <SimpleMenu changeFilter={this.changeFilter}/>
       </Grid>
 
       <Grid container spacing={3} style={{ width: '96vw', margin: '0 2vw' }}>
-        <Package packageItem={{title: "Local Charity Box"}}/>
-        <Package packageItem={{title: "Local Charity Box"}}/>
-        <Package packageItem={{title: "Local Charity Box"}}/>
-
-        <Package packageItem={{title: "Local Charity Box"}}/>
-        <Package packageItem={{title: "Local Charity Box"}}/>
-        <Package packageItem={{title: "Local Charity Box"}}/>
-
-        <Package packageItem={{title: "Local Charity Box"}}/>
-        <Package packageItem={{title: "Local Charity Box"}}/>
-        <Package packageItem={{title: "Local Charity Box"}}/>
-
-        <Package packageItem={{title: "Local Charity Box"}}/>
-        <Package packageItem={{title: "Local Charity Box"}}/>
-        <Package packageItem={{title: "Local Charity Box"}}/>
+        {packageList.length !== 0 && 
+        packageList.map((item) => (
+          <Package packageItem={item}/>
+        ))
+      }
       </Grid>
     </div>
     );

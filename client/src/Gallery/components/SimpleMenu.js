@@ -11,7 +11,7 @@ class SimpleMenu extends Component {
     this.state = {
       isOpen: false,
       anchorEl: null,
-      currentFilter: "Recommended for You"
+      currentFilter: "Popular Near You"
     }
     this.handleOpen = this.handleOpen.bind(this)
     this.handleClose = this.handleClose.bind(this)
@@ -45,9 +45,8 @@ class SimpleMenu extends Component {
           open={this.state.isOpen}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={(e) => this.handleSelection(e)} id={1} content="Recommended for You">Recommended for You</MenuItem>
+          <MenuItem onClick={(e) => this.handleSelection(e)} id={1} content="Popular Near You">Popular Near You</MenuItem>
           <MenuItem onClick={(e) => this.handleSelection(e)} id={2} content="Popular Worldwide">Popular Worldwide</MenuItem>
-          <MenuItem onClick={(e) => this.handleSelection(e)} id={3} content="Popular Near You">Popular Near You</MenuItem>
         </Menu>
       </div>
     );

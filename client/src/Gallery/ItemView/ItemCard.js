@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
 import { Done } from '@material-ui/icons'
 
-export default class ItemCard extends Component {
+class ItemCard extends Component {
   getNameinHuman = (s) => {
     const k = s.split("_")
     let human = ''
@@ -43,6 +44,8 @@ export default class ItemCard extends Component {
     )
   }
 }
+
+export default withRouter(ItemCard);
 
 const Card = styled.div`
   pointer-events: ${(props) => props.disabled ? 'none' : 'auto'};

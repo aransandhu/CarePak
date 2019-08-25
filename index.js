@@ -1,9 +1,7 @@
 const express = require('express');
 const path = require('path');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const iplocation = require("iplocation").default;
-var ip = require('ip');
+
 
 var sqlite3 = require('sqlite3').verbose();
 var fs = require('fs');
@@ -11,7 +9,7 @@ var fs = require('fs');
 
 const app = express();
 const DB_PATH = 'db/sqlite.db'
-var port = 8000
+var port = 5000
 const db = new sqlite3.Database(DB_PATH, function(err){
     if (err) {
         console.log(err)
@@ -23,6 +21,7 @@ const db = new sqlite3.Database(DB_PATH, function(err){
 app.use(bodyParser.urlencoded({ extended : true}));
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(bodyParser.json());
 
 
 // var sql = fs.readFileSync('db/test.sql').toString();
@@ -107,13 +106,14 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 //     }
 // });
 
-app.get('/popular/', async (req, res, next) => {
-    var location = req.body.location;
+app.post('/popular/', function (req, res){
+    var location = req.body.data.location;
     let topX = 6;
 
-    var sql = "SELECT y.* FROM Packages y WHERE ? = y.City ORDER BY NumberDonations LIMIT ?";
-    db.get(sql, [location, topX], function (err, row){
+    var sql = "SELECT y.* FROM Packages y WHERE ? = y.City ORDER BY NumberDonations DESC LIMIT ?";
+    db.all(sql, [location, topX], function (err, row){
   			if (err) {
+          console.log(err);
           res.status(500);
   			} else if (row) {
           res.status(200);
@@ -124,11 +124,11 @@ app.get('/popular/', async (req, res, next) => {
 		});
 });
 
-app.get('/popular/', async (req, res, next) => {
+app.post('/globalpopular/', function (req, res){
     let topX = 6;
 
-    var sql = "SELECT y.* FROM Packages y ORDER BY NumberDonations LIMIT ?";
-    db.get(sql, [topX], function (err, row){
+    var sql = "SELECT y.* FROM Packages y ORDER BY NumberDonations DESC LIMIT ?";
+    db.all(sql, [topX], function (err, row){
   			if (err) {
           res.status(500);
   			} else if (row) {
@@ -140,12 +140,12 @@ app.get('/popular/', async (req, res, next) => {
 		});
 });
 
-app.get('/topBoxType/', async (req, res, next) => {
+app.get('/topBoxType/', function (req, res){
     let packageID = req.body.packageID;
     let topX = 2;
 
     var sql = "SELECT y.Package_id, x.Category, Count(y.Item_id) as total FROM PackageItem y INNER JOIN Item x ON y.Item_id = x.id WHERE y.Package_id = ? GROUP BY y.Package_id, x.Category SORT BY total LIMIT ?";
-    db.get(sql, [packageID, topX], function (err, row){
+    db.all(sql, [packageID, topX], function (err, row){
   			if (err) {
           res.status(500);
   			} else if (row) {
@@ -157,12 +157,12 @@ app.get('/topBoxType/', async (req, res, next) => {
 		});
 });
 
-app.get('/userInterests/', async (req, res, next) => {
+app.get('/userInterests/', function (req, res){
     let userID = req.body.userID;
     let topX = 5;
 
     var sql = "SELECT x.User_id, y.Category, Count(x.Item_id) as total FROM History x INNER JOIN Item y ON x.Item_id = y.Id WHERE x.User_id = ? GROUP BY x.User_id, y.Category SORT BY total LIMIT ?";
-    db.get(sql, [userID, topX], function (err, row){
+    db.all(sql, [userID, topX], function (err, row){
   			if (err) {
           res.status(500);
   			} else if (row) {
@@ -174,11 +174,11 @@ app.get('/userInterests/', async (req, res, next) => {
 		});
 });
 
-app.get('/boxInfo/', async (req, res, next) => {
+app.post('/boxInfo/', function (req, res){
     let packageID = req.body.packageID;
 
     var sql = "SELECT * FROM Packages x WHERE x.Id = ?";
-    db.get(sql, [packageID], function (err, row){
+    db.all(sql, [packageID], function (err, row){
   			if (err) {
           res.status(500);
   			} else if (row) {
@@ -190,11 +190,28 @@ app.get('/boxInfo/', async (req, res, next) => {
 		});
 });
 
-app.get('/userInfo/', async (req, res, next) => {
+app.post('/boxItems/', function (req, res){
+  let packageID = req.body.packageID;
+
+  var sql = "SELECT * FROM PackageItem x INNER JOIN Item ON x.Item_id = Item.Id WHERE x.Package_id = ?";
+  db.all(sql, [packageID], function (err, row){
+      if (err) {
+        console.log(err)
+        res.status(500);
+      } else if (row) { 
+        res.status(200);
+      } else {
+        res.status(401);
+      }
+      res.json(row);
+  });
+});
+
+app.get('/userInfo/', function (req, res){
     let userID = req.body.userID;
 
     var sql = "SELECT * FROM User x WHERE x.Id = ?";
-    db.get(sql, [userID], function (err, row){
+    db.all(sql, [userID], function (err, row){
   			if (err) {
           res.status(500);
   			} else if (row) {
@@ -206,11 +223,11 @@ app.get('/userInfo/', async (req, res, next) => {
 		});
 });
 
-app.get('/userDonationHistory/', async (req, res, next) => {
+app.get('/userDonationHistory/', function (req, res){
     let userID = req.body.userID;
 
     var sql = "SELECT * FROM History x WHERE x.User_id = ?";
-    db.get(sql, [userID], function (err, row){
+    db.all(sql, [userID], function (err, row){
   			if (err) {
           res.status(500);
   			} else if (row) {
@@ -222,11 +239,11 @@ app.get('/userDonationHistory/', async (req, res, next) => {
 		});
 });
 
-app.get('/category/', async (req, res, next) => {
+app.get('/category/', function (req, res){
     let category = req.body.category;
     var sql = "SELECT x.* FROM Packages x INNER JOIN PackageItem y ON x.ID = y.Package_id INNER JOIN Item z ON y.Item_id = z.id GROUP BY x.id, z.category ORDER BY Count(y.Item_id);"
 
-    db.get(sql, [category], function (err, row){
+    db.all(sql, [category], function (err, row){
   			if (err) {
           res.status(500);
   			} else if (row) {
@@ -239,7 +256,7 @@ app.get('/category/', async (req, res, next) => {
 });
 
 
-app.post('/userDonation/', async (req, res, next) => {
+app.post('/userDonation/', function (req, res){
     let userID = req.body.userID;
     let itemID = req.body.itemID;
     let amount = req.body.amount;
