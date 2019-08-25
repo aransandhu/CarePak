@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
-import ConfirmationModal from './ConfirmationModal';
+import { Done } from '@material-ui/icons'
 
-export default class PurchaseModal extends Component {
-  state = {
-    confOpen: false,
-  }
-
+export default class ConfirmationModal extends Component {
   render() {
-    const { name, price, open, charity, close, confOpen } = this.props;
+    const { close, open } = this.props;
 
     return (
       <Wrapper open={open}>
-        <div className="modal">
-          <Typography variant="h5" style={{ fontWeight: '700' }}>
-            Would you like to purchase {name} from {charity}?
+        <div className="m">
+          <Done fontSize="large" className="indicate"/>
+          <Typography variant="h4" style={{ fontWeight: '700' }}>
+            Awesome!
           </Typography>
           <Typography variant="subtitle1" style={{paddingBottom: '4rem'}}>
-            Total cost will be ${price}.
+            Your purchase has been successful.
           </Typography>
-          <Button no onClick={close}>No</Button>
-          <Button onClick={() => this.setState({ confOpen: true })}>Yes</Button>
+          <Button no onClick={close}>OK</Button>
         </div>
-        <ConfirmationModal open={this.state.confOpen} close={() => this.setState({ confOpen: false }, close)}/>
       </Wrapper>
     )
   }
@@ -31,6 +26,11 @@ export default class PurchaseModal extends Component {
 
 const Wrapper = styled.div `
   display: ${(props) => props.open ? 'block' : 'none'};
+
+  .indicate {
+    color: #32CD32;
+    font-size: 5rem;
+  }
 
   @keyframes bounceInDown {
     from,
@@ -70,8 +70,11 @@ const Wrapper = styled.div `
     }
   }
 
-  .modal {
-    display: ${(props) => props.open ? 'block' : 'none'};
+  .m {
+    position: absolute;
+    width: 38vw;
+    height: 28vh;
+    background: red;
     text-align: center;
     position: absolute;
     width: 38vw;
@@ -93,10 +96,7 @@ const Button = styled.div `
   display: inline-block;
   -webkit-appearance: none;
   background: -webkit-gradient(to right,#52ccc4 0%,#f5e6a6 50%,#ee786e 100%);
-  background: ${(props) => props.no
-    ? `linear-gradient(to right,#e8553f 0%,#f5e6a6 50%,#78cbde 100%)`
-    : `linear-gradient(to right,#52ccc4 0%,#f5e6a6 50%,#ee786e 100%)`
-  };
+  background: linear-gradient(to right,#52ccc4 0%,#f5e6a6 50%,#ee786e 100%);
   background-size: 500%;
   border: none;
   border-radius: 2rem;
