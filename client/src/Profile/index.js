@@ -209,12 +209,12 @@ class Profile extends Component {
                   <Grid item xs={2}>
                     <Item url="iconset/chocolate.png" />
                     <Item url="iconset/open-book.png" />
-                    <Item url="iconset/pencil-case.png" />
+                    <Item url="iconset/socks.png" />
                   </Grid>
                   <Grid item xs={2}>
                     <Item url="iconset/notebook.png" />
                     <Item url="iconset/robot.png" />
-                    <Item url="iconset/teeth-brushing.png" />
+                    <Item url="iconset/toothbrush.png" />
                   </Grid>
                 </Grid>
               }

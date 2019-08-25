@@ -108,6 +108,7 @@ class ItemView extends Component {
                     title={item.Name}
                     description=""
                     price={item.CurPrice}
+                    icon={item.Icon}
                     />
                   )}
                 </Grid>
@@ -117,6 +118,7 @@ class ItemView extends Component {
                     title={item.Name}
                     description=""
                     price={item.CurPrice}
+                    icon={item.Icon}
                     />
                   )}
                 </Grid>
@@ -126,6 +128,7 @@ class ItemView extends Component {
                     title={item.Name}
                     description=""
                     price={item.CurPrice}
+                    icon={item.Icon}
                     />
                   )}
                 </Grid>

@@ -23,7 +23,7 @@ class ItemCard extends Component {
   }
 
   render() {
-    const { disabled, description, title, price } = this.props;
+    const { disabled, description, title, price, icon } = this.props;
 
     return (
       <Card disabled={disabled}>
@@ -39,7 +39,8 @@ class ItemCard extends Component {
             {`Click to buy: $${price}`}
           </Typography>
         </Description>
-        <Item url={title} className="item-img"/>
+        {console.log(icon)}
+        <Item url={icon} className="item-img"/>
       </Card>
     )
   }
