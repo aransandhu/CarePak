@@ -8,11 +8,6 @@ var ip = require('ip');
 var sqlite3 = require('sqlite3').verbose();
 var fs = require('fs');
 
-// const mongooseDSN = 'mongodb://localhost:27017/carepak';
-// const UserModel = require('./model/user');
-// const PackageModel = require('./model/package');
-// const DonationModel = require('./model/donation');
-// const ItemModel = require('./model/item');
 
 const app = express();
 const DB_PATH = 'db/sqlite.db'
@@ -29,18 +24,6 @@ app.use(bodyParser.urlencoded({ extended : true}));
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-db.serialize(function() {
-  var sql = fs.readFileSync('db/createUser.sql').toString();
-  db.run(sql);
-  var sql = fs.readFileSync('db/createItem.sql').toString();
-  db.run(sql);
-  var sql = fs.readFileSync('db/createPackages.sql').toString();
-  db.run(sql);
-  var sql = fs.readFileSync('db/createPackageItem.sql').toString();
-  db.run(sql);
-  var sql = fs.readFileSync('db/createHistory.sql').toString();
-  db.run(sql);
-});
 
 // var sql = fs.readFileSync('db/test.sql').toString();
 //
