@@ -86,61 +86,37 @@ class ItemView extends Component {
             }}>
               <Grid container spacing={0} style={{ marginLeft: '5rem'}}>
                 <Grid item xs={4}>
-                  <ItemCard
-                    title="apple"
-                    description="An apple a day keeps the doctor away."
-                    price={1}
-                  />
-                  <ItemCard
-                    title="apple"
-                    description="An apple a day keeps the doctor away."
-                    price={1}
-                  />
-                  <ItemCard
-                    title="apple"
-                    description="An apple a day keeps the doctor away."
-                    price={1}
-                  />
+                {this.state.packageItems.slice(0, 3).map((item) => 
+                    <ItemCard
+                    title={item.Name}
+                    description=""
+                    price={item.CurPrice}
+                    />
+                  )}
                 </Grid>
                 <Grid item xs={4}>
-                  <ItemCard
-                    title="apple"
-                    description="An apple a day keeps the doctor away."
-                    price={1}
-                  />
-                  <ItemCard
-                    title="baby_toys"
-                    description="An apple a day keeps the doctor away."
-                    price={1}
-                  />
-                  <ItemCard
-                    title="apple"
-                    description="An apple a day keeps the doctor away."
-                    price={1}
-                  />
+                {this.state.packageItems.slice(3, 6).map((item) => 
+                    <ItemCard
+                    title={item.Name}
+                    description=""
+                    price={item.CurPrice}
+                    />
+                  )}
                 </Grid>
                 <Grid item xs={4}>
-                  <ItemCard
-                    title="apple"
-                    description="An apple a day keeps the doctor away."
-                    price={1}
-                  />
-                  <ItemCard
-                    title="apple"
-                    description="An apple a day keeps the doctor away."
-                    price={1}
-                  />
-                  <ItemCard
-                    title="apple"
-                    description="An apple a day keeps the doctor away."
-                    price={1}
-                  />
+                {this.state.packageItems.slice(6).map((item) => 
+                    <ItemCard
+                    title={item.Name}
+                    description=""
+                    price={item.CurPrice}
+                    />
+                  )}
                 </Grid>
               </Grid>
             </Card>
           </Grid>
         </Grid>}
-        <Box />
+        <Box/>
       </div>
     );
   }

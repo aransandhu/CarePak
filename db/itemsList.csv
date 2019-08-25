@@ -66,7 +66,7 @@ Can Opener ,kitchen,10,can_opener
 Kettle,kitchen,25,kettle
 Baseball Bat,sports,20,baseball_bat
 Sheets,necessities,5,sheets
-Soccer,sports,20,soccer
+Soccer ball,sports,20,soccer
 Baseball Mitt,sports,15,baseball_mitt
 Light Bulbs,home,5,light_bulbs
 Rug,home,15,rug
@@ -93,3 +93,5 @@ Art Palette,hobbies,3,art_palette
 Artwork Frame,hobbies,10,artwork_frame
 Paint,hobbies,5,paintbrushes
 Fire Starter,necessities,10,fire_starter
+Dolls,toys,10,dolls
+Paint Canvas,hobbies,10,paint_canvas
