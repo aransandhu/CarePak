@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Grid, Typography, Card } from '@material-ui/core';
+import { ArrowBack } from '@material-ui/icons'
 import styled from 'styled-components';
 import ItemCard from './ItemCard'
 
@@ -21,13 +22,17 @@ export default class ItemView extends Component {
               <Typography variant="subtitle1" style={{marginTop: '2rem'}}>
                 Hover over any item on the right to see description and prices.
               </Typography>
-              <Back>Click to go Back</Back>
+              <Back onClick={() => this.props.history.push('/')}>
+                <ArrowBack style={{position: 'absolute', marginLeft: '-2.4rem', marginTop: '-0.1rem'}}/>
+                Click to go Back
+              </Back>
             </div>
           </Grid>
           <Grid item xs={7}>
             <Card
             style={{
               background: 'rgba(255, 255, 255, 0.4)',
+              border: '1px solid rgba(50, 50, 255, 0.05)',
               marginTop: '4vh',
               height: '54vh',
               padding: '4vh 0 10vh 0'
@@ -107,8 +112,8 @@ right: calc(31% - 140px);
 
 const Back = styled.div `
   -webkit-appearance: none;
-  background: -webkit-gradient(to right,#a2ccb6 0%,#fceeb5 50%,#ee786e 100%);
-  background: linear-gradient(to right,#a2ccb6 0%,#fceeb5 50%,#ee786e 100%);
+  background: -webkit-gradient(to right,#52ccc4 0%,#f5e6a6 50%,#ee786e 100%);
+  background: linear-gradient(to right,#52ccc4 0%,#f5e6a6 50%,#ee786e 100%);
   background-size: 500%;
   border: none;
   border-radius: 2rem;
@@ -119,7 +124,7 @@ const Back = styled.div `
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 3rem;
+  height: 1.6rem;
   letter-spacing: .05em;
   outline: none;
   -webkit-tap-highlight-color: transparent;
@@ -127,26 +132,16 @@ const Back = styled.div `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 12rem;
-  margin-top: 3rem;
-
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%
-    }
-    100% {
-      background-position: 100%
-    }
-  }
+  width: 13rem;
+  margin-top: 5rem;
+  margin-left: calc(85% - 12rem);
+  text-align: center;
+  padding: 0.8rem 0 0.6rem 1rem;
+  background-position: 0% 50%;
+  transition: background-position 1.5s;
 
   &:hover {
-    animation-name: gradient;
-    -webkit-animation-name: gradient;
-    animation-duration: 2s;
-    -webkit-animation-duration: s;
-    animation-iteration-count: 1;
-    -webkit-animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
+    transition: background-position 1.5s;
+    background-position: 100%;
   }
 `
