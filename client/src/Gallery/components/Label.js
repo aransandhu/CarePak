@@ -28,5 +28,5 @@ const Tag = styled.div `
   height: 1.4rem;
   text-align: left;
   margin-right: 1rem;
-  padding: 0.4rem 1rem 0rem 1rem;
+  padding: 0.2rem 1rem 0rem 1rem;
 `
