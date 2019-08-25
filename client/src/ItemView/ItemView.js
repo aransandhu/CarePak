@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { Grid, Typography, Card } from '@material-ui/core';
-import { ArrowBack } from '@material-ui/icons'
 import styled from 'styled-components';
 import ItemCard from './ItemCard'
 import { Label } from '../components'
@@ -25,17 +24,13 @@ class ItemView extends Component {
               <Typography variant="subtitle1" style={{marginTop: '2rem'}}>
                 Hover over any item on the right to see description and prices.
               </Typography>
-              <Back onClick={() => this.props.history.push('/')}>
-                <ArrowBack style={{position: 'absolute', marginLeft: '-2.4rem', marginTop: '-0.1rem'}}/>
-                Click to go Back
-              </Back>
+              <Back>Click to go Back</Back>
             </div>
           </Grid>
           <Grid item xs={7}>
             <Card
             style={{
               background: 'rgba(255, 255, 255, 0.4)',
-              border: '1px solid rgba(50, 50, 255, 0.05)',
               marginTop: '4vh',
               height: '54vh',
               padding: '4vh 0 10vh 0'
