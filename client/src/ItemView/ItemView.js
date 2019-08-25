@@ -35,6 +35,7 @@ class ItemView extends Component {
             <Card
             style={{
               background: 'rgba(255, 255, 255, 0.4)',
+              border: '1px solid rgba(50, 50, 255, 0.05)',
               marginTop: '4vh',
               height: '54vh',
               padding: '4vh 0 10vh 0'
