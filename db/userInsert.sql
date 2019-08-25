@@ -28,9 +28,9 @@ INSERT INTO Packages (
  )
 VALUES
  (
- 'A Charity',
+ 'Covent House Toronto',
  'Winter Necessities Pack',
- 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+ 'A package containing all of the essentials to survive the cold winters of Canada.',
  'Toronto',
  2
  );
@@ -44,9 +44,9 @@ INSERT INTO Packages (
  )
 VALUES
  (
- 'B Charity',
+ 'Backpack Program',
  'School Supplies Pack',
- 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+ 'A package containing all of the essential school supplies a child would need to succeed! ',
  'Toronto',
  4
  );
@@ -60,9 +60,9 @@ INSERT INTO Packages (
  )
 VALUES
  (
- 'C Charity',
+ 'Toronto Food Bank',
  'Food Basics',
- 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+ 'A package containing a delicious array of foods to help feed the hungry. ',
  'Toronto',
  10
  );
@@ -76,9 +76,9 @@ INSERT INTO Packages (
  )
 VALUES
  (
- 'D Charity',
+ 'Holiday Helpers',
  'Christmas Gift Pack',
- 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+ 'A package containing Christmas gifts so every family can enjoy opening gifts on Christmas morning. ',
  'Toronto',
  13
  );
@@ -92,9 +92,9 @@ INSERT INTO Packages (
  )
 VALUES
  (
- 'E Charity',
- 'Life Necessities A',
- 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+ 'Humanity First Canada',
+ 'Life Necessities #1',
+ 'A package containing all the essentials to survive. ',
  'Toronto',
  22
  );
@@ -108,9 +108,9 @@ INSERT INTO Packages (
  )
 VALUES
  (
- 'F Charity',
- 'Life Necessities B',
- 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+ 'Paradise Charity',
+ 'Life Necessities #2',
+ 'A package containing all the essentials to survive. ',
  'Toronto',
  25
  );
@@ -124,9 +124,9 @@ INSERT INTO Packages (
  )
 VALUES
  (
- 'G Charity',
+ 'JumpStart Sports Charity',
  'Sports Package',
- 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+ 'A package containing sports equipment to every child can have fun! ',
  'Vancouver',
  50
  );
@@ -140,10 +140,9 @@ INSERT INTO Packages (
  )
 VALUES
  (
- 'H Charity',
+ 'Habitat For Humanity Vancouver',
  'Home Package',
- 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
- 'Vancouver',
+ 'A package containing all the home necessities.'
  65
  );
  
@@ -156,9 +155,9 @@ INSERT INTO Packages (
  )
 VALUES
  (
- 'I Charity',
+ 'Salvation Army Canada',
  'Kitchen Package',
- 'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
+ 'A package containing all the home necessities. ',
  'Vancouver',
  23
  );
