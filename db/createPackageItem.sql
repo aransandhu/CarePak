@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS PACKAGEITEM;
+CREATE TABLE PackageItem (
+    FOREIGN KEY(Package_id) REFERENCES Packages(Id),
+    FOREIGN KEY(Item_id) REFERENCES Item(Id),
+    paidSoFar INTEGER NOT NULL
+);
