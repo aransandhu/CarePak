@@ -21,6 +21,7 @@ export default class ItemView extends Component {
               <Typography variant="subtitle1" style={{marginTop: '2rem'}}>
                 Hover over any item on the right to see description and prices.
               </Typography>
+              <Back>Click to go Back</Back>
             </div>
           </Grid>
           <Grid item xs={7}>
@@ -111,4 +112,14 @@ height: 250px;
 position: absolute;
 bottom: 0;
 right: calc(31% - 140px);
+`
+
+const Back = styled.div `
+  background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
+  height: 5vh;
+  width: 10vw;
+  color: white;
+  &:hover {
+    background-position: right center;
+  }
 `
