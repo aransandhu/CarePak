@@ -107,7 +107,7 @@ app.use(bodyParser.json());
 // });
 
 app.get('/all/', function (req, res){
-  var sql = "SELECT y.* FROM Packages y ?";
+  var sql = "SELECT * FROM Packages";
   db.all(sql, function (err, row){
       if (err) {
         console.log(err);
