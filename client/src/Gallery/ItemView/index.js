@@ -58,7 +58,7 @@ class ItemView extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({boxTags: response.data[0]}, () => {console.log(response.data[0])})
+      self.setState({boxTags: response.data}, () => {console.log(response.data)})
     })
     .catch(function (error) {
       // handle error
@@ -75,14 +75,13 @@ class ItemView extends Component {
       <div style={{height: '92vh'}}>
         {this.state.package !== null && this.state.boxTags != null && <Grid container spacing={3} style={{width: '98vw' }}>
           <Grid item xs={5}>
-            {console.log(this.state.package)}
             <div style={{padding: '3.5rem 2rem'}}>
               <Typography variant="h4" style={{ fontWeight: '700'}}>Donate to {this.state.package.Title}</Typography>
               <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
               {this.state.package.CharityName}
               </Typography>
               <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
-              <Label tag={this.state.boxTags.Category} from="#8dd1d6" to="#7b8ad1"/>
+              {this.state.boxTags.map((item) => <Chip style={{margin: '1px'}} label={item.Category}/>)}
               </Typography>
               <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
               {this.state.package.Description}
