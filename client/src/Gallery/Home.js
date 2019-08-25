@@ -33,7 +33,7 @@ class Home extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({packageList: response.data}, () => {console.log(response.data)})
+      self.setState({packageList: response.data})
     })
     .catch(function (error) {
       // handle error
@@ -58,7 +58,7 @@ class Home extends Component {
         })
         .then(function (response) {
           // handle success
-          self.setState({packageList: response.data}, () => {console.log(response.data)})
+          self.setState({packageList: response.data})
         })
         .catch(function (error) {
           // handle error
@@ -72,8 +72,7 @@ class Home extends Component {
           url: '/globalpopular/',
         })
         .then(function (response) {
-          self.setState({packageList: response.data}, () => console.log(self.state.packageList))
-        })
+          self.setState({packageList: response.data})})
         .catch(function (error) {
           console.log(error);
         })
@@ -84,8 +83,7 @@ class Home extends Component {
           url: '/all/',
         })
         .then(function (response) {
-          self.setState({packageList: response.data}, () => console.log(self.state.packageList))
-        })
+          self.setState({packageList: response.data})})
         .catch(function (error) {
           console.log(error);
         })

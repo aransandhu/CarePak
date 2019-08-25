@@ -187,7 +187,8 @@ app.post('/userInterests/', function (req, res){
           res.status(200);
 			  } else {
 				  res.status(401);
-		    }
+        }
+        console.log(row);
 		    res.json(row);
 		});
 });

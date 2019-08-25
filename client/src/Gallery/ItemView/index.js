@@ -30,7 +30,7 @@ class ItemView extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({package: response.data[0]}, () => {console.log(response.data[0])})
+      self.setState({package: response.data[0]})
     })
     .catch(function (error) {
       // handle error
@@ -45,8 +45,7 @@ class ItemView extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({packageItems: response.data}, () => {console.log(response.data)})
-    })
+      self.setState({packageItems: response.data})})
     .catch(function (error) {
       // handle error
       console.log(error);
@@ -60,8 +59,7 @@ class ItemView extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({boxTags: response.data}, () => {console.log(response.data)})
-    })
+      self.setState({boxTags: response.data})})
     .catch(function (error) {
       // handle error
       console.log(error);
@@ -74,8 +72,6 @@ class ItemView extends Component {
 
   render() {
     const { purchasing, open } = this.state;
-    console.log("STATE:::", purchasing, open)
-
     return (
       <div style={{height: '92vh'}}>
         <PurchaseModal

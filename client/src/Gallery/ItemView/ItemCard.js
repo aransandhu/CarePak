@@ -39,7 +39,6 @@ class ItemCard extends Component {
             {`Click to buy: $${price}`}
           </Typography>
         </Description>
-        {console.log(icon)}
         <Item url={icon} className="item-img"/>
       </Card>
     )

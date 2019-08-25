@@ -27,6 +27,7 @@ const Tag = styled.div `
   -moz-osx-font-smoothing: grayscale;
   height: 1.4rem;
   text-align: left;
-  margin-right: 1rem;
-  padding: 0.4rem 1rem 0rem 1rem;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 0.1rem 1rem 0rem 1rem;
 `

@@ -79,7 +79,7 @@ class Profile extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({user: response.data[0]}, () => {console.log(response.data[0])})
+      self.setState({user: response.data[0]})
     })
     .catch(function (error) {
       // handle error
@@ -91,7 +91,7 @@ class Profile extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({userInterests: response.data[0]}, () => {console.log(response.data[0])})
+      self.setState({userInterests: response.data})
     })
     .catch(function (error) {
       // handle error
@@ -103,7 +103,7 @@ class Profile extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({userHistory: response.data[0]}, () => {console.log(response.data[0])})
+      self.setState({userHistory: response.data[0]})
     })
     .catch(function (error) {
       // handle error
@@ -159,7 +159,9 @@ class Profile extends Component {
               min='12rem'
               header="Frequent Donations"
               content={
-                <Label tag={this.state.userInterests.Category} from="#6fafd1" to="#7b8ad1"/>
+                this.state.userInterests.map((item) =>
+                <Label tag={item.Category}  from="#6fafd1" to="#7b8ad1"/>
+                )
               }
             />}
           </Grid>
