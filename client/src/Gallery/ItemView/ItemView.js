@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Grid, Typography, Card } from '@material-ui/core';
+import { ArrowBack } from '@material-ui/icons'
 import styled from 'styled-components';
 import ItemCard from './ItemCard'
 import { Label } from '../components'
@@ -23,7 +24,10 @@ export default class ItemView extends Component {
               <Typography variant="subtitle1" style={{marginTop: '2rem'}}>
                 Hover over any item on the right to see description and prices.
               </Typography>
-              <Back>Click to go Back</Back>
+              <Back onClick={() => this.props.history.push('/')}>
+                <ArrowBack style={{position: 'absolute', marginLeft: '-2.4rem', marginTop: '-0.1rem'}}/>
+                Click to go Back
+              </Back>
             </div>
           </Grid>
           <Grid item xs={7}>
@@ -108,11 +112,36 @@ right: calc(31% - 140px);
 `
 
 const Back = styled.div `
-  background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
-  height: 5vh;
-  width: 10vw;
-  color: white;
-  &:hover {
-    background-position: right center;
+  -webkit-appearance: none;
+  background: -webkit-gradient(to right,#52ccc4 0%,#f5e6a6 50%,#ee786e 100%);
+  background: linear-gradient(to right,#52ccc4 0%,#f5e6a6 50%,#ee786e 100%);
+  background-size: 500%;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  color: white;	  color: white;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 1.6rem;
+  letter-spacing: .05em;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 13rem;
+  margin-top: 5rem;
+  margin-left: calc(85% - 12rem);
+  text-align: center;
+  padding: 0.8rem 0 0.6rem 1rem;
+  background-position: 0% 50%;
+  transition: background-position 1.5s;
+   &:hover {
+    transition: background-position 1.5s;
+    background-position: 100%;
   }
 `
