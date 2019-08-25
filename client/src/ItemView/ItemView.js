@@ -14,8 +14,9 @@ class ItemView extends Component {
         <Grid container spacing={3} style={{width: '98vw' }}>
           <Grid item xs={5}>
             <div style={{padding: '7rem 2rem'}}>
-              <Typography variant="h4" style={{ fontWeight: '700'}}>Donate to Charity of Ryan</Typography>
-              <Label tag="hello" />
+              <Typography variant="h4" style={{ fontWeight: '700', marginBottom: '0.4rem'}}>Donate to Charity of Ryan</Typography>
+              <Label tag="Children in Need" from="#8dd1d6" to="#7b8ad1"/>
+              <Label tag="Family" from="#66cce3" to="#66e373"/>
               <Typography variant="subtitle1" style={{marginTop: '2rem'}}>
                 The charity of Ryan is a blablaThe charity of Ryan is a blablaThe charity of
                 Ryan is a blablaThe charity of
