@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Grid, Typography, Card } from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
+import { ArrowBack } from '@material-ui/icons'
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import ItemCard from './ItemCard'
+import { Label } from '../components'
 
 import axios from 'axios';
 
@@ -64,7 +66,7 @@ class ItemView extends Component {
     })
     .finally(function () {
       // always executed
-    }); 
+    });
   }
 
 
@@ -80,7 +82,7 @@ class ItemView extends Component {
               {this.state.package.CharityName}
               </Typography>
               <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
-              <Chip label={this.state.boxTags.Category}/>
+              <Label tag={this.state.boxTags.Category} from="#8dd1d6" to="#7b8ad1"/>
               </Typography>
               <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
               {this.state.package.Description}
@@ -88,9 +90,10 @@ class ItemView extends Component {
               <Typography variant="subtitle1" style={{marginTop: '1rem'}}>
                 Hover over items on the right to see description and prices.
               </Typography>
-              <Button style={{marginTop: '2rem'}} variant="contained" color="primary" onClick={() => this.props.history.push('/')}>
-                Go Back
-              </Button>
+              <Back onClick={() => this.props.history.push('/')}>
+                <ArrowBack style={{position: 'absolute', marginLeft: '-2.4rem', marginTop: '-0.1rem'}}/>
+                Click to go Back
+              </Back>
             </div>
           </Grid>
           <Grid item xs={7}>
@@ -103,7 +106,7 @@ class ItemView extends Component {
             }}>
               <Grid container spacing={0} style={{ marginLeft: '5rem'}}>
                 <Grid item xs={4}>
-                {this.state.packageItems.slice(0, 3).map((item) => 
+                {this.state.packageItems.slice(0, 3).map((item) =>
                     <ItemCard
                     title={item.Name}
                     description=""
@@ -112,7 +115,7 @@ class ItemView extends Component {
                   )}
                 </Grid>
                 <Grid item xs={4}>
-                {this.state.packageItems.slice(3, 6).map((item) => 
+                {this.state.packageItems.slice(3, 6).map((item) =>
                     <ItemCard
                     title={item.Name}
                     description=""
@@ -121,7 +124,7 @@ class ItemView extends Component {
                   )}
                 </Grid>
                 <Grid item xs={4}>
-                {this.state.packageItems.slice(6).map((item) => 
+                {this.state.packageItems.slice(6).map((item) =>
                     <ItemCard
                     title={item.Name}
                     description=""
@@ -152,12 +155,36 @@ right: calc(31% - 140px);
 `
 
 const Back = styled.div `
-  background-image: linear-gradient(to right, #4CB8C4 0%, #3CD3AD 51%, #4CB8C4 100%);
-  height: 5vh;
-  width: 10vw;
-  color: white;
-  &:hover {
-    cursor: pointer;
-    background-position: center;
+  -webkit-appearance: none;
+  background: -webkit-gradient(to right,#52ccc4 0%,#f5e6a6 50%,#ee786e 100%);
+  background: linear-gradient(to right,#52ccc4 0%,#f5e6a6 50%,#ee786e 100%);
+  background-size: 500%;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  color: white;	  color: white;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 1.6rem;
+  letter-spacing: .05em;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 13rem;
+  margin-top: 5rem;
+  margin-left: calc(85% - 12rem);
+  text-align: center;
+  padding: 0.8rem 0 0.6rem 1rem;
+  background-position: 0% 50%;
+  transition: background-position 1.5s;
+   &:hover {
+    transition: background-position 1.5s;
+    background-position: 100%;
   }
 `
