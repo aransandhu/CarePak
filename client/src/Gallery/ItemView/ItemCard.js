@@ -1,13 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
 import { Done } from '@material-ui/icons'
 
-const ItemCard = ({ disabled, description, title, price, url }) => (
+export default class ItemCard extends Component {
+  getNameinHuman = (s) => {
+    const k = s.split("_")
+    let human = ''
+    let c = 1
+    for (var i of k) {
+      human += (i.slice(0, 1).toUpperCase() + i.slice(1))
+
+      if (c !== k.length) {
+        human += ' '
+      }
+
+      c += 1
+    }
+
+    return human
+  }
+
+  render() {
+    const { disabled, description, title, price } = this.props;
+
+    return (
       <Card disabled={disabled}>
         {disabled && <Done fontSize="large" className="indicate"/>}
         <Description className="desc">
-          <Typography variant="subtitle1" style={{fontWeight: '700'}}>{title}</Typography>
+          <Typography variant="subtitle1" style={{fontWeight: '700'}}>
+            {this.getNameinHuman(title)}
+          </Typography>
           <Typography variant="subtitle2">
             {description}
           </Typography>
@@ -15,11 +38,11 @@ const ItemCard = ({ disabled, description, title, price, url }) => (
             {`Click to buy: $${price}`}
           </Typography>
         </Description>
-        <Item url={url} className="item-img"/>
+        <Item url={title} className="item-img"/>
       </Card>
-)
-
-export default ItemCard;
+    )
+  }
+}
 
 const Card = styled.div`
   pointer-events: ${(props) => props.disabled ? 'none' : 'auto'};
@@ -116,7 +139,7 @@ const Card = styled.div`
 `
 
 const Item = styled.img.attrs({
-  src: (props) => '../iconset/' + props.url
+  src: (props) => '../iconset/' + props.url + '.png'
 })`
 `
 
