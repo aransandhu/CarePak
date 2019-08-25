@@ -31,7 +31,7 @@ class SimpleMenu extends Component {
     this.props.changeFilter(event.currentTarget.getAttribute("id"));
     this.handleClose();
   }
-  
+
   render(){
     return (
       <div>
