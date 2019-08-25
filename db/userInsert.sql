@@ -142,7 +142,8 @@ VALUES
  (
  'Habitat For Humanity Vancouver',
  'Home Package',
- 'A package containing all the home necessities.'
+ 'A package containing all the home necessities.',
+ 'Vancouver',
  65
  );
  
