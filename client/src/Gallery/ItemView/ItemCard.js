@@ -23,10 +23,10 @@ class ItemCard extends Component {
   }
 
   render() {
-    const { disabled, description, title, price, icon } = this.props;
+    const { disabled, description, title, price, icon, clickfxn } = this.props;
 
     return (
-      <Card disabled={disabled}>
+      <Card disabled={disabled} onClick={clickfxn}>
         {disabled && <Done fontSize="large" className="indicate"/>}
         <Description className="desc">
           <Typography variant="subtitle1" style={{fontWeight: '700'}}>

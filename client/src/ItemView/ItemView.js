@@ -110,6 +110,7 @@ width: 280px;
 height: 250px;
 position: absolute;
 bottom: 0;
+margin-top: 3rem;
 right: calc(31% - 140px);
 `
 
