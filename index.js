@@ -157,13 +157,14 @@ app.get('/topBoxType/', function (req, res){
 		});
 });
 
-app.get('/userInterests/', function (req, res){
+app.post('/userInterests/', function (req, res){
     let userID = req.body.userID;
     let topX = 5;
 
-    var sql = "SELECT x.User_id, y.Category, Count(x.Item_id) as total FROM History x INNER JOIN Item y ON x.Item_id = y.Id WHERE x.User_id = ? GROUP BY x.User_id, y.Category SORT BY total LIMIT ?";
+    var sql = "SELECT x.User_id, y.Category, Count(x.Item_id) as total FROM History x INNER JOIN Item y ON x.Item_id = y.Id WHERE x.User_id = ? GROUP BY x.User_id, y.Category ORDER BY total LIMIT ?";
     db.all(sql, [userID, topX], function (err, row){
   			if (err) {
+          console.log(err)
           res.status(500);
   			} else if (row) {
           res.status(200);
@@ -207,12 +208,13 @@ app.post('/boxItems/', function (req, res){
   });
 });
 
-app.get('/userInfo/', function (req, res){
+app.post('/userInfo/', function (req, res){
     let userID = req.body.userID;
 
     var sql = "SELECT * FROM User x WHERE x.Id = ?";
     db.all(sql, [userID], function (err, row){
   			if (err) {
+          console.log(err)
           res.status(500);
   			} else if (row) {
           res.status(200);
@@ -223,7 +225,7 @@ app.get('/userInfo/', function (req, res){
 		});
 });
 
-app.get('/userDonationHistory/', function (req, res){
+app.post('/userDonationHistory/', function (req, res){
     let userID = req.body.userID;
 
     var sql = "SELECT * FROM History x WHERE x.User_id = ?";

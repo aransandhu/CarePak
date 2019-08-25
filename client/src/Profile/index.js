@@ -8,11 +8,23 @@ import Icon from '@mdi/react'
 import { mdiFacebook, mdiTwitter } from '@mdi/js';
 import styled from 'styled-components';
 
+import axios from 'axios';
+
 import ReactDOM from 'react-dom';
 import Calendar from 'react-github-contribution-calendar';
 
 
 class Profile extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      user: null,
+      userInterests: null,
+      userHistory: null,
+    }
+
+  }
 
   padZero(int) {
     let i = (int + 1).toString()
@@ -60,21 +72,55 @@ class Profile extends Component {
   }
 
   componentDidMount() {
+    var self = this;
+
+    axios.post('/userInfo/', {
+      userID: 1
+    })
+    .then(function (response) {
+      // handle success
+      self.setState({user: response.data[0]}, () => {console.log(response.data[0])})
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+
+    axios.post('/userInterests/', {
+      userID: 1
+    })
+    .then(function (response) {
+      // handle success
+      self.setState({userInterests: response.data[0]}, () => {console.log(response.data[0])})
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+
+    axios.post('/userDonationHistory/', {
+      userID: 1
+    })
+    .then(function (response) {
+      // handle success
+      self.setState({userHistory: response.data[0]}, () => {console.log(response.data[0])})
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+
+
+    
     this.renderGraph()
   }
 
   render() {
-    const user = {
-      firstName: 'Julian',
-      lastName: 'Zhang',
-      user: 'jay-zee'
-    };
-
     return (
       <Wrap>
         <Grid container spacing={3} style={{ width: '80vw'}}>
           <Grid item xs={4}>
-            <Info
+            {this.state.user !== null && <Info
               height='28vh'
               min='12rem'
               width='100%'
@@ -82,8 +128,8 @@ class Profile extends Component {
               icon="yes"
               content={
                 <div style={{ marginTop: '0.5rem' }}>
-                  <Typography variant='h6' style={{ fontWeight: '700' }}>{user.firstName} {user.lastName}</Typography>
-                  <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{user.user}</Typography>
+                  <Typography variant='h6' style={{ fontWeight: '700' }}>{this.state.user.FirstName} {this.state.user.LastName}</Typography>
+                  <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{this.state.user.Email}</Typography>
                   <IconButton
                     style={{ background: 'lightblue'}}
                     size="small"
@@ -114,16 +160,14 @@ class Profile extends Component {
                   </IconButton>
                 </div>
               }
-            />
-            <Info
+            />}
+            {this.state.userInterests !== null && <Info
               height='28vh'
               width='100%'
               min='12rem'
-              header="Interests"
-              content={
-                "interests go here!"
-              }
-            />
+              header="Frequent Donations"
+              content={"~" + this.state.userInterests.Category}
+            />}
           </Grid>
           <Grid item xs={8}>
             <Info
