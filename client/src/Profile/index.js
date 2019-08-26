@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router";
-import { Info } from './components';
+import { Info, Label } from './components';
 import NavBar from './NavBar';
 import { Grid, Typography, IconButton, Card } from '@material-ui/core';
 import Icon from '@mdi/react'
@@ -79,7 +79,7 @@ class Profile extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({user: response.data[0]}, () => {console.log(response.data[0])})
+      self.setState({user: response.data[0]})
     })
     .catch(function (error) {
       // handle error
@@ -91,7 +91,7 @@ class Profile extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({userInterests: response.data[0]}, () => {console.log(response.data[0])})
+      self.setState({userInterests: response.data})
     })
     .catch(function (error) {
       // handle error
@@ -103,7 +103,7 @@ class Profile extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({userHistory: response.data[0]}, () => {console.log(response.data[0])})
+      self.setState({userHistory: response.data[0]})
     })
     .catch(function (error) {
       // handle error
@@ -111,7 +111,7 @@ class Profile extends Component {
     })
 
 
-    
+
     this.renderGraph()
   }
 
@@ -131,31 +131,23 @@ class Profile extends Component {
                   <Typography variant='h6' style={{ fontWeight: '700' }}>{this.state.user.FirstName} {this.state.user.LastName}</Typography>
                   <Typography variant='subtitle1' style={{ paddingBottom: '1rem' }}>{this.state.user.Email}</Typography>
                   <IconButton
-                    style={{ background: 'lightblue'}}
+                    style={{ background: '#38A1F3'}}
                     size="small"
                   >
                     <Icon path={mdiTwitter}
                       title="User Profile"
                       size={1}
-                      horizontal
-                      vertical
-                      rotate={90}
                       color="white"
-                      spin
                     />
                   </IconButton>
                   <IconButton
-                    style={{ background: 'blue', marginLeft: '1rem'}}
+                    style={{ background: '#3b5998', marginLeft: '1rem'}}
                     size="small"
                   >
                     <Icon path={mdiFacebook}
                       title="User Profile"
                       size={1}
-                      horizontal
-                      vertical
-                      rotate={90}
                       color="white"
-                      spin
                     />
                   </IconButton>
                 </div>
@@ -166,7 +158,11 @@ class Profile extends Component {
               width='100%'
               min='12rem'
               header="Frequent Donations"
-              content={"~" + this.state.userInterests.Category}
+              content={
+                this.state.userInterests.map((item) =>
+                <Label tag={item.Category}  from="#6fafd1" to="#7b8ad1"/>
+                )
+              }
             />}
           </Grid>
           <Grid item xs={8}>
@@ -204,17 +200,17 @@ class Profile extends Component {
                   <Grid item xs={2}>
                     <Item url="iconset/backpack.png" />
                     <Item url="iconset/folder.png" />
-                    <Item url="iconset/make-up.png" />
+                    <Item url="iconset/badminton_racket.png" />
                   </Grid>
                   <Grid item xs={2}>
                     <Item url="iconset/chocolate.png" />
-                    <Item url="iconset/open-book.png" />
-                    <Item url="iconset/pencil-case.png" />
+                    <Item url="iconset/notebook.png" />
+                    <Item url="iconset/art_palette.png" />
                   </Grid>
                   <Grid item xs={2}>
                     <Item url="iconset/notebook.png" />
-                    <Item url="iconset/robot.png" />
-                    <Item url="iconset/teeth-brushing.png" />
+                    <Item url="iconset/plates.png" />
+                    <Item url="iconset/canned_beans.png" />
                   </Grid>
                 </Grid>
               }

@@ -13,7 +13,7 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      filterId : 1,
+      filterId : 'popular',
       loading: true,
       packageList: [],
     }
@@ -33,7 +33,7 @@ class Home extends Component {
     })
     .then(function (response) {
       // handle success
-      self.setState({packageList: response.data}, () => {console.log(response.data)})
+      self.setState({packageList: response.data})
     })
     .catch(function (error) {
       // handle error
@@ -50,23 +50,45 @@ class Home extends Component {
     const oldId = this.state.filterId;
     if (oldId !== newFilterId){
       this.setState({filterId: newFilterId})
-    
-      axios({
-        method: 'post',
-        url: newFilterId === 1 ? '/global/' : '/globalpopular/',
-        data: newFilterId === 1 ? {location: 'Toronto'} : {}
-      })
-      .then(function (response) {
-        // handle success
-        self.setState({packageList: response.data}, () => console.log(self.state.packageList))
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
+      if(newFilterId === 'popular' ){
+        axios.post('/popular/', {
+          data: {
+            location: 'Toronto',
+          }
+        })
+        .then(function (response) {
+          // handle success
+          self.setState({packageList: response.data})
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+      }
+
+      else if(newFilterId === 'worldwide'){
+        axios({
+          method: 'post',
+          url: '/globalpopular/',
+        })
+        .then(function (response) {
+          self.setState({packageList: response.data})})
+        .catch(function (error) {
+          console.log(error);
+        })
+      }
+      else{
+        axios({
+          method: 'get',
+          url: '/all/',
+        })
+        .then(function (response) {
+          self.setState({packageList: response.data})})
+        .catch(function (error) {
+          console.log(error);
+        })
+      }
+     
     };  
   }
 
